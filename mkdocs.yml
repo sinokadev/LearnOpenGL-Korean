@@ -1,1 +1,7 @@
 site_name: LearnOpenGL Korea
+
+markdown_extensions:
+  - admonition
+
+extra_css:
+  - css/style.css
