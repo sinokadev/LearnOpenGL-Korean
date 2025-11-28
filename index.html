@@ -36,32 +36,24 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
-                                <a href="." class="nav-link active" aria-current="page">LearnOpenGL</a>
+                                <a href="." class="nav-link active" aria-current="page">소개</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="GL-docs/" class="nav-link">GL 문서</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">GL docs</a>
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">목차</a>
                                 <ul class="dropdown-menu">
                                     
-<li>
-    <a href="GL-docs/" class="dropdown-item">문서</a>
-</li>
-                                    
-<li>
-    <a href="GL-docs/funcs/" class="dropdown-item">Funcs</a>
-</li>
-                                    
-<li>
-    <a href="GL-docs/words/" class="dropdown-item">Words</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">시작하기</a>
-                                <ul class="dropdown-menu">
-                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">시작하기</a>
+    <ul class="dropdown-menu">
+            
 <li>
     <a href="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/OpenGL/" class="dropdown-item">OpenGL</a>
 </li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                         </ul>
@@ -78,7 +70,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="GL-docs/" class="nav-link">
+                                <a rel="next" href="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/OpenGL/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -139,7 +131,7 @@
 <p>OpenGL은 자체 플랫폼이 아닌 그래픽 API이므로 작동할 언어가 필요하며 우리는 C++를 사용할 것입니다. 따라서 C++에 대한 어느 정도의 지식이 필요합니다. 그래도 고급 C++ 개념은 같이 설명 할 예정이니 C++에 대해서 전문가일 필요는 없습니다. 단지 'Hello World'프로그램 이상을 작성할 수 있으면 됩니다. C++에 대한 경험이 많지 않은 경우 <a href="https://www.learncpp.com/">www.learncpp.com</a>를 추천드립니다.</p>
 <p>또한, 이 과정에서 선형대수, 기하학, 삼각법과 같은 수학을 사용할 예정이며, 필요한 모든 수학 개념을 설명하려고 노력할 것입니다. 하지만 저는 수학에 정통하지 않기 때문에 제 설명이 이해하기 쉬울지라도 대부분 불완전할 것입니다. 따라서 필요한 경우, 자료를 더 완벽하게 설명하는 좋은 자료들을 참고하실 수 있도록 안내해 드리겠습니다. OpenGL을 시작하기 전에 필요한 수학적 지식에 대해 걱정하지 마세요. 기본적인 수학적 배경 지식만 있으면 거의 모든 개념을 이해할 수 있으며, 가능한 한 수학적인 내용은 최소화하려고 노력할 것입니다. 대부분의 기능은 사용법만 알면 모든 수학적 지식을 이해할 필요가 없습니다. </p>
 <h2 id="_3">구조</h2>
-<p>LearnOpenGL은 여러 개의 일반 섹션으로 나뉩니다. 각 섹션은 여러 장으로 구성되어 있으며, 각 장은 다양한 개념을 자세히 설명합니다. 각 장은 왼쪽 메뉴에서 찾을 수 있습니다. 개념은 선형적으로 학습되므로 별도의 지시가 없는 한 처음부터 끝까지 순차적으로 학습하는 것이 좋습니다. 각 장에서는 배경 이론과 실제 코드를 설명합니다.</p>
+<p>LearnOpenGL은 여러 개의 일반 섹션으로 나뉩니다. 각 섹션은 여러 장으로 구성되어 있으며, 각 장은 다양한 개념을 자세히 설명합니다. 각 장은 위쪽 목차 메뉴에서 찾을 수 있습니다. 개념은 선형적으로 학습되므로 별도의 지시가 없는 한 처음부터 끝까지 순차적으로 학습하는 것이 좋습니다. 각 장에서는 배경 이론과 실제 코드를 설명합니다.</p>
 <h3 id="_4">상자</h3>
 <div class="admonition tip">
 <p><strong>초록색</strong> 상자에는 OpenGL이나 해당 주제에 대한 몇 가지 참고 사항이나 유용한 기능 또는 힌트가 들어 있습니다.</p>
@@ -168,6 +160,7 @@
 <p>모든 내용은 CC BY 4.0 라이선스로 배포됩니다.(<a href="https://creativecommons.org/licenses/by-nc/4.0/legalcode">https://creativecommons.org/licenses/by-nc/4.0/legalcode</a>)</p>
 <p>원작자: <a href="https://joeydevries.com">Joey de Vries</a><br />
 원작자의 트위터(현 X): @JoeyDeVriez</p>
+<p>이 웹사이트는 같은 엔진을 사용하는 <a href="https://learnopengl-cn.github.io">중국어 LearnOpenGL</a> 웹사이트를 일부 참고하였습니다.</p>
 <h2 id="_8">번역자</h2>
 <p>저의 사이트도 확인해 보세요.<br />
 <a href="https://sinoka.dev">https://sinoka.dev</a></p>
@@ -255,5 +248,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-11-28 03:56:20.889919+00:00
+Build Date UTC : 2025-11-28 06:44:17.448648+00:00
 -->
