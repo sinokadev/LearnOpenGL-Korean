@@ -7,3 +7,10 @@ markdown_extensions:
 
 extra_css:
   - css/style.css
+
+nav:
+  - 소개: index.md
+  - GL 문서: GL-docs/
+  - 목차:
+    - 시작하기:
+      - OpenGL: 시작하기/OpenGL.md
