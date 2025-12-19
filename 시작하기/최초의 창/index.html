@@ -7,17 +7,17 @@
         
         
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>문서 - LearnOpenGL Korean</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/fontawesome.min.css" rel="stylesheet">
-        <link href="../css/brands.min.css" rel="stylesheet">
-        <link href="../css/solid.min.css" rel="stylesheet">
-        <link href="../css/v4-font-face.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>최초의 창 - LearnOpenGL Korean</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
         <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
-        <link href="../css/style.css" rel="stylesheet">
+        <link href="../../css/style.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
     </head>
@@ -25,7 +25,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">LearnOpenGL Korean</a>
+                <a class="navbar-brand" href="../..">LearnOpenGL Korean</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -36,13 +36,13 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
-                                <a href=".." class="nav-link">소개</a>
+                                <a href="../.." class="nav-link">소개</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link">GL 문서</a>
+                                <a href="../../GL-docs/" class="nav-link">GL 문서</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">목차</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">목차</a>
                                 <ul class="dropdown-menu">
                                     
   <li class="dropdown-submenu">
@@ -50,11 +50,11 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/OpenGL/" class="dropdown-item">OpenGL</a>
+    <a href="../OpenGL/" class="dropdown-item">OpenGL</a>
 </li>
             
 <li>
-    <a href="../%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/%EC%B5%9C%EC%B4%88%EC%9D%98%20%EC%B0%BD/" class="dropdown-item">최초의 창</a>
+    <a href="./" class="dropdown-item active" aria-current="page">최초의 창</a>
 </li>
     </ul>
   </li>
@@ -68,6 +68,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../OpenGL/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -86,8 +96,16 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#_1" class="nav-link">문서</a>
+            <li class="nav-item" data-bs-level="1"><a href="#_1" class="nav-link">최초의 창</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#glfw" class="nav-link">GLFW</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#glfw_1" class="nav-link">GLFW 빌드하기</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -95,12 +113,18 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="_1">문서</h1>
-<p>이곳에는 다양한 OpenGL 함수 상수 변수 또는 개념에 대한 설명이 모여있습니다.</p>
-<ul>
-<li><a href="funcs">함수</a></li>
-<li><a href="words">용어</a></li>
-</ul></div>
+<h1 id="_1">최초의 창</h1>
+<p>멋진 그래픽을 만들기 전에 가장 먼저 해야 할 일은 OpenGL 컨텍스트와 그림을 그릴 애플리케이션 창을 생성하는 것입니다. 하지만 이러한 작업은 운영 체제마다 다르며, OpenGL은 이러한 작업을 직접 하지 않습니다. 즉, 창을 생성하고, 컨텍스트를 정의하고, 사용자 입력을 처리하는 모든 과정을 우리가 수행해야 합니다.</p>
+<p>다행히도 우리가 해야 할 일을 대신 해주는 라이브러리가 많으며, 그중 일부는 특히 OpenGL을 대상으로 합니다. 이러한 라이브러리를 사용하면 운영체제 관련 작업을 모두 생략하고 렌더링할 창과 OpenGL 컨텍스트를 제공받을 수 있습니다. 인기 있는 라이브러리로는 GLUT, SDL, SFML, GLFW 등이 있습니다. LearnOpenGL에서는 <code>GLFW</code>를 사용할 예정입니다. 다른 라이브러리를 사용하셔도 무방하며, 대부분의 설정은 GLFW와 유사합니다.</p>
+<div class="admonition note">
+<p>많은 경우에서 GLUT는 추천하지 않습니다. GLUT는 오래되었고, 너무 단순하고, 대신 사용할수 있는 라이브러리 많습니다. GLFW를 사용하세요.</p>
+</div>
+<h2 id="glfw">GLFW</h2>
+<p>GLFW는 OpenGL을 위해 특별히 작성된 C 언어 라이브러리입니다. GLFW는 화면에 콘텐츠를 렌더링하는 데 필요한 기본적인 기능들을 제공합니다. OpenGL 컨텍스트를 생성하고, 창 매개변수를 정의하고, 사용자 입력을 처리할 수 있으며, 이는 우리의 목적에 충분합니다.</p>
+<p>이 장과 다음 장의 목표는 GLFW를 실행하여 OpenGL 컨텍스트를 제대로 생성하고 간단한 창을 표시하여 테스트해 볼 수 있도록 하는 것입니다. 이 장에서는 GLFW 라이브러리를 가져오고, 빌드하고, 링크하는 과정을 단계별로 설명합니다. 이 글을 작성하는 시점을 기준으로 Microsoft Visual Studio 2019 IDE를 사용하지만, 최신 버전의 Visual Studio에서도 과정은 동일합니다. Visual Studio를 사용하지 않거나 이전 버전을 사용하는 경우에도 대부분의 다른 IDE에서 유사한 과정을 거치므로 걱정하지 않으셔도 됩니다.</p>
+<h2 id="glfw_1">GLFW 빌드하기</h2>
+<p>GLFW는 웹페이지의 <a href="https://www.glfw.org/download.html">다운로드 페이지</a>에서 구할 수 있습니다. GLFW는 Visual Studio 2012부터 2019까지 사용할 수 있는 컴파일된 바이너리와 헤더 파일을 제공하지만, 실습을 위해 소스 코드에서 직접 컴파일해 보겠습니다. 모든 오픈소스 라이브러리에 컴파일된 바이너리가 제공되는 것은 아니므로, 직접 컴파일하는 과정을 경험해 보는 것이 목적입니다. 자, 그럼 소스 패키지를 다운로드해 보겠습니다.</p>
+<p>CMake를 설치한 후에는 명령줄이나 GUI를 통해 실행할 수 있습니다. 여기서는 복잡한 과정을 피하고 GUI를 사용하겠습니다. CMake는 소스 코드 폴더와 바이너리를 저장할 폴더를 필요로 합니다. 소스 코드 폴더로는 다운로드한 GLFW 소스 패키지의 루트 폴더를 선택하고, 바이너리 저장 폴더로는 <code>'build'</code>라는 새 디렉토리를 생성한 후 해당 디렉토리를 선택합니다.</p></div>
             </div>
         </div>
 
@@ -108,13 +132,13 @@
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
         <script>
-            var base_url = "..",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js"></script>
-        <script src="../search/main.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
