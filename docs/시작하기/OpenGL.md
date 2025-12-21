@@ -47,7 +47,6 @@ if(GL_ARB_extension_name)
 }
 else
 {
-    // 그런 기술은 우리가 사용할 만큼 싸지 않아요.
     // 오래된 방법을 사용해봅시다.
 }
 ```
@@ -56,3 +55,58 @@ OpenGL 버전 3.3에서는 대부분 기술에 확장 기능이 거의 필요하
 
 ## 상태 머신
 
+OpenGL은 그 자체로 하나의 거대한 상태 머신(State machine)입니다. 상태 머신이란 OpenGL이 현재 어떻게 작동해야 하는지를 정의하는 변수들의 모음입니다. OpenGL의 상태는 일반적으로 OpenGL <span style="color: #228B22;">컨텍스트(context)</span>라고 불립니다. OpenGL을 사용할 때, 우리는 종종 몇 가지 옵션을 설정하거나 버퍼를 조작하여 상태를 변경한 다음, 현재 상태에 따라 렌더링합니다.
+
+예를 들어 삼각형 대신 선을 그리도록 OpenGL에 지시할 때마다, OpenGL이 그림을 그리는 방식을 설정하는 컨텍스트 변수를 변경하여 OpenGL의 상태를 바꿉니다. 컨텍스트를 변경하여 OpenGL에 선을 그리도록 지시하는 순간, 이후의 그리기 명령은 삼각형 대신 선을 그리게 됩니다.
+
+OpenGL을 사용하다 보면 컨텍스트를 변경하는 여러 <span style="color: #228B22;">상태 변경(state-changing)</span> 함수와 OpenGL의 현재 상태에 따라 연산을 수행하는 여러 <span style="color: #228B22;">상태 사용(state-using)</span> 함수를 접하게 됩니다. OpenGL이 기본적으로 하나의 거대한 상태 머신이라는 점을 명심하면 대부분의 기능을 쉽게 이해할 수 있습니다.
+
+## 객체
+
+OpenGL 라이브러리는 C 언어로 작성되었으며 다른 언어로 파생될 수 있는 부분이 많지만, 핵심은 여전히 ​​C 라이브러리라는 점입니다. C 언어의 여러 구문들이 다른 고급 언어로 잘 변환되지 않는 경우가 많기 때문에, OpenGL은 여러 추상화 개념을 염두에 두고 개발되었습니다. 그중 하나가 OpenGL의 <span style="color: #228B22;">객체(object)</span>입니다.
+
+OpenGL에서 객체는 OpenGL 상태의 일부를 나타내는 옵션들의 모음입니다. 예를 들어, 드로잉 창의 설정을 나타내는 객체가 있을 수 있으며, 이 객체를 통해 창의 크기, 지원하는 색상 수 등을 설정할 수 있습니다. 객체는 C 언어의 구조체와 유사한 형태로 시각화할 수 있습니다:
+```c
+struct object_name {
+    float  option1;
+    int    option2;
+    char[] name;
+};
+```
+일반적으로 객체를 사용하려는 경우 다음과 같은 형태를 띨 수 있습니다(OpenGL의 컨텍스트는 큰 구조체로 시각화됨).
+```c
+// OpenGL의 상태
+struct OpenGL_Context {
+  	...
+  	object_name* object_Window_Target;
+  	...  	
+};
+```
+```
+// 객체 만들기
+unsigned int objectId = 0;
+glGenObject(1, &objectId);
+// 컨텍스트에 객체를 바인딩하고 할당
+glBindObject(GL_WINDOW_TARGET, objectId);
+// 현재 GL_WINDOW_TARGET에 바인딩된 객체의 옵션 설정
+glSetObjectOption(GL_WINDOW_TARGET, GL_OPTION_WINDOW_WIDTH,  800);
+glSetObjectOption(GL_WINDOW_TARGET, GL_OPTION_WINDOW_HEIGHT, 600);
+// 컨텍스트 대상을 기본값으로 되돌리기
+glBindObject(GL_WINDOW_TARGET, 0);
+```
+
+이 작은 코드 조각은 OpenGL을 사용할 때 자주 접하게 되는 워크플로입니다. 먼저 객체를 생성하고 해당 객체에 대한 참조를 ID로 저장합니다(실제 객체 데이터는 내부적으로 저장됩니다). 그런 다음 객체 ID(objectId)를 사용하여 윈도우 대상 컨텍스트(`GL_WINDOW_TARGET`)에 객체를 바인딩합니다. 다음으로 윈도우 옵션을 설정하고 마지막으로 윈도우 대상 컨텍스트의 현재 객체 ID를 0으로 설정하여 객체 바인딩을 해제합니다. 설정한 옵션은 `objectId`로 참조되는 객체에 저장되며, 객체를 `GL_WINDOW_TARGET`에 다시 바인딩하는 즉시 설정 값이 원래대로 되돌아갑시다.
+
+!!! warning ""
+	지금까지 제공된 코드 예제는 OpenGL의 작동 방식을 대략적으로 보여주는 것에 불과하며, 책 전체를 통해 실제 예제를 충분히 접하게 될 것입니다.
+
+이러한 객체를 사용하는 가장 큰 장점은 애플리케이션에서 여러 개의 객체를 정의하고 각 객체의 옵션을 설정할 수 있다는 것입니다. OpenGL의 상태를 사용하는 작업을 시작할 때마다 원하는 설정으로 객체를 바인딩하기만 하면 됩니다. 예를 들어 3D 모델 데이터(집이나 캐릭터)를 담는 컨테이너 객체가 있는데, 이러한 객체 중 하나를 그리고 싶을 때마다 모델 데이터가 담긴 객체를 바인딩하면 됩니다(이러한 객체는 미리 생성하고 옵션을 설정해 둡니다). 여러 개의 객체를 사용하면 다양한 모델을 지정할 수 있고, 특정 모델을 그리고 싶을 때는 그리기 전에 해당 객체를 바인딩하기만 하면 되므로 모든 옵션을 다시 설정할 필요가 없습니다.
+
+## 자 이제 시작이야
+
+지금까지 여러분은 OpenGL이라는 명세와 라이브러리에 대해 간략하게 알아보고, OpenGL이 내부적으로 어떻게 작동하는지, 그리고 OpenGL에서 사용하는 몇 가지 특별한 기능에 대해서도 배웠습니다. 모든 내용을 다 이해하지 못했더라도 걱정하지 마세요. 이 책을 통해 각 단계를 차근차근 설명하고 충분한 예제를 통해 OpenGL을 확실히 이해할 수 있도록 도와드리겠습니다.
+
+## 참고자료
+
+[opengl.org](https://www.opengl.org/): OpenGL 공식 웹사이트
+[OpenGL registry](https://www.opengl.org/registry/): 모든 OpenGL 버전에 대한 사양과 확장기능
