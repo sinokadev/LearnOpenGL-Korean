@@ -118,6 +118,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_5" class="nav-link">참고자료</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -135,7 +139,7 @@
 <p>GLFW는 OpenGL을 위해 특별히 작성된 C 언어 라이브러리입니다. GLFW는 화면에 콘텐츠를 렌더링하는 데 필요한 기본적인 기능들을 제공합니다. OpenGL 컨텍스트를 생성하고, 창 매개변수를 정의하고, 사용자 입력을 처리할 수 있으며, 이는 우리의 목적에 충분합니다.</p>
 <p>이 장과 다음 장의 목표는 GLFW를 실행하여 OpenGL 컨텍스트를 제대로 생성하고 간단한 창을 표시하여 테스트해 볼 수 있도록 하는 것입니다. 이 장에서는 GLFW 라이브러리를 가져오고, 빌드하고, 링크하는 과정을 단계별로 설명합니다. 이 글을 작성하는 시점을 기준으로 Microsoft Visual Studio 2019 IDE를 사용하지만, 최신 버전의 Visual Studio에서도 과정은 동일합니다. Visual Studio를 사용하지 않거나 이전 버전을 사용하는 경우에도 대부분의 다른 IDE에서 유사한 과정을 거치므로 걱정하지 않으셔도 됩니다.</p>
 <h2 id="glfw_1">GLFW 빌드하기</h2>
-<p>GLFW는 웹페이지의 <a href="https://www.glfw.org/download.html">다운로드 페이지</a>에서 구할 수 있습니다. GLFW는 Visual Studio 2012부터 2019까지 사용할 수 있는 컴파일된 바이너리와 헤더 파일을 제공하지만, 실습을 위해 소스 코드에서 직접 컴파일해 보겠습니다. 모든 오픈소스 라이브러리에 컴파일된 바이너리가 제공되는 것은 아니므로, 직접 컴파일하는 과정을 경험해 보는 것이 목적입니다. 자, 그럼 <em>소스 패키지</em>를 다운로드해 보겠습니다.</p>
+<p>GLFW는 웹페이지의 <a href="https://www.glfw.org/download.html">다운로드 페이지</a>에서 구할 수 있습니다. GLFW는 Visual Studio 2012부터 2019까지 사용할 수 있는 컴파일된 바이너리와 헤더 파일을 제공하지만, 실습을 위해 소스 코드에서 직접 컴파일해 보겠습니다. 모든 오픈소스 라이브러리에 컴파일된 바이너리가 제공되는 것은 아니므로, 직접 컴파일하는 과정을 경험해 보는 것이 목적입니다. 자, 그럼 소스 패키지를 다운로드해 보겠습니다.</p>
 <div class="admonition warning">
 <p>모든 라이브러리는 64비트 바이너리로 빌드될 예정이므로, 미리 컴파일된 바이너리를 사용하는 경우 64비트 바이너리를 다운로드하시기 바랍니다.</p>
 </div>
@@ -147,7 +151,7 @@
 <p>소스 코드에서 라이브러리를 컴파일하면 결과 라이브러리가 사용자의 CPU/운영체제에 완벽하게 최적화된다는 장점이 있습니다. 미리 컴파일된 바이너리는 이러한 장점을 항상 제공하는 것은 아닙니다(때로는 시스템에 맞는 미리 컴파일된 바이너리를 구할 수 없는 경우도 있습니다). 하지만 공개된 소스코드로 빌드하는 과정에는 문제가 있습니다. 모든 사람이 동일한 IDE나 빌드 시스템을 사용하여 애플리케이션을 개발하는 것은 아니기 때문에, 제공된 프로젝트/솔루션 파일이 다른 사람의 환경과 호환되지 않을 수 있습니다. 따라서 사용자는 제공된 .c/.cpp 및 .h/.hpp 파일을 사용하여 자신만의 프로젝트/솔루션을 구성해야 하는데, 이는 번거로운 작업입니다. 바로 이러한 이유 때문에 CMake라는 도구가 존재합니다.</p>
 <h3 id="cmake">CMake</h3>
 <div class="admonition note">
-<p>원문에서는 윈도우 환경에서 Visual Studio 2019를 사용하는걸 상정합니다. 저(번역가)는 리눅스를 사용하며, VSCode를 사용하므로, 리눅스나 맥 같은 기타 환경에서의 빌드도 따로 설명하겠습니다. 같은 이유로 아래의 Visual Studio에서 빌드하는 설명은 부실할 수 있습니다. </p>
+<p>원문에서는 윈도우 환경에서 Visual Studio 2019를 사용하는걸 상정합니다. 저(번역가)는 리눅스를 사용하며, VSCode를 사용하므로, 리눅스에서 빌드하는 방법을 <a href="/시작하기/최초의 창-리눅스/">이곳</a>에서 설명하겠습니다. 같은 이유로 아래의 Visual Studio에서 빌드하는 설명은 부실할 수 있습니다. </p>
 </div>
 <p>CMake는 미리 정의된 CMake 스크립트를 사용하여 소스 코드 파일 모음으로부터 사용자가 선택한 프로젝트/솔루션 파일(예: Visual Studio 솔루션 파일/make 파일 등)을 생성할 수 있는 도구입니다. 이를 통해 GLFW 소스 패키지에서 Visual Studio 2019 프로젝트 파일을 생성하고, 이 파일을 사용하여 라이브러리를 컴파일할 수 있습니다. 먼저 CMake를 다운로드하여 설치해야 합니다. CMake는 공식 <a href="http://www.cmake.org/cmake/resources/software.html">다운로드 페이지</a>에서 다운로드할 수 있습니다.</p>
 <p>CMake를 설치한 후에는 CLI나 GUI를 통해 실행할 수 있습니다. 여기서는 복잡한 과정을 피하고 GUI를 사용하겠습니다. CMake는 소스 코드 폴더와 바이너리를 저장할 폴더를 필요로 합니다. 소스 코드 폴더로는 다운로드한 GLFW 소스 패키지의 루트 폴더를 선택하고, 바이너리 저장 폴더로는 'build'라는 새 디렉토리를 생성한 후 해당 디렉토리를 선택합니다.</p>
@@ -202,7 +206,27 @@ GL_GENBUFFERS glGenBuffers  = (GL_GENBUFFERS)wglGetProcAddress(&quot;glGenBuffer
 unsigned int buffer;
 glGenBuffers(1, &amp;buffer);
 </code></pre>
-<p>보다시피 코드가 복잡해 보이고, 아직 선언되지 않은 각 함수에 대해 이 작업을 일일이 수행하는 것은 번거로운 과정입니다. 다행히 이러한 목적을 위한 라이브러리가 있으며, 그중 GLAD는 인기 있고 최신 라이브러리입니다.</p></div>
+<p>보다시피 코드가 복잡해 보이고, 사용할 모든 함수에 일일이 이런 복잡한 작업을 하는것은 번거로운 과정입니다. 다행히 이러한 목적을 위한 라이브러리가 있으며, 그중 GLAD는 인기 있고 최신 라이브러리입니다.</p>
+<h3 id="glad_1">GLAD 세팅하기</h3>
+<p>GLAD는 앞서 언급한 번거로운 작업을 모두 처리해주는 <a href="https://github.com/Dav1dde/glad">오픈 소스</a> 라이브러리입니다. GLAD는 대부분의 일반적인 오픈 소스 라이브러리와는 약간 다른 설정 방식을 사용합니다. <a href="https://glad.dav1d.de/">웹 서비스</a>를 통해 어떤 버전의 OpenGL을 정의하고, 해당 버전에 맞는 모든 관련 OpenGL 함수를 로드할지 GLAD에 알려줄 수 있습니다.</p>
+<p>GLAD <a href="http://glad.dav1d.de">웹 서비스</a>에 접속하여 언어가 C++로 설정되어 있는지 확인하고, API 부분에서 OpenGL 버전(gl이라고 표시됨) 3.3 이상을 선택하세요(저희는 3.3 버전을 사용할 예정이며, 더 높은 버전도 괜찮습니다). 또한 프로필(Profile)이 Core로 설정되어 있고 "로더 생성(Generate a loader)" 옵션이 선택되어 있는지 확인하세요. 확장자는 (일단은) 무시하고 "생성(GENERATE)"을 클릭하여 라이브러리 파일을 생성합니다.</p>
+<div class="admonition warning">
+<p>GLAD1 버전은 <a href="http://glad.dav1d.de">http://glad.dav1d.de</a>에서 배포됩니다. 우리는 GLAD1을 사용하므로, GLAD2 버전을 사용하지 마세요.</p>
+</div>
+<p>생성을 클릭하면 include 폴더와 glad.c 파일 하나가 포함된 zip 파일이 생성될 것입니다. include 디렉토리 안의 두 include 폴더(glad와 KHR)를 우리의 프로젝트 안의 include 디렉터리에 복사하거나, 해당 폴더를 가리키는 추가 항목을 생성한 후, <code>glad.c</code> 파일을 프로젝트에 추가하세요.</p>
+<p>이제 우리는 glad를 사용할 수 있습니다.</p>
+<pre><code class="language-c">#include &lt;glad/glad.h&gt; 
+</code></pre>
+<p>컴파일 버튼을 눌러도 오류가 나지 않아야 합니다. 모두 완료 되었다면 이제 다음 장에서 GLFW와 GLAD를 설정하고, OpenGL 컨텍스트를 만들고, 창을 띄워보겠습니다. include 디렉터리와 라이브러리 디렉터리가 모두 올바른지, 그리고 링커 설정의 라이브러리 이름이 해당 라이브러리와 일치하는지 확인하세요.</p>
+<h2 id="_5">참고자료</h2>
+<ul>
+<li><a href="https://www.glfw.org/docs/latest/window_guide.html">GLFW: Window Guide</a>: GLFW의 공식 GLFW 가이드입니다.</li>
+<li><a href="https://www.opengl-tutorial.org/miscellaneous/building-your-own-c-application/">Building applications</a>: 애플리케이션의 컴파일/링크 프로세스에 대한 유용한 정보와 발생할 수 있는 오류 목록(및 해결 방법)을 제공하는 가이드입니다.</li>
+<li><a href="https://wiki.codeblocks.org/index.php?title=Using_GLFW_with_Code::Blocks">GLFW with Code::Blocks</a>: Code::Blocks에서 GLFW를 설정하는 가이드입니다.</li>
+<li><a href="https://learnopengl.com/demo/autotools_tutorial.txt">Writing a build system under Linux</a>: an autotools tutorial by Wouter Verholst on how to write a build system in Linux.</li>
+<li><a href="https://github.com/Polytonic/Glitter">Polytonic/Glitter</a>: 필요한 모든 것이 미리 세팅된 프로젝트입니다.</li>
+<li><a href="https://medium.com/geekculture/a-beginners-guide-to-setup-opengl-in-linux-debian-2bfe02ccd1e">A Beginner’s Guide to Setup OpenGL in Linux (Debian)</a>: Step-by-step guide for setting up OpenGL in Ubuntu along with the installation of required libraries: GLFW and GLAD.</li>
+</ul></div>
             </div>
         </div>
 
