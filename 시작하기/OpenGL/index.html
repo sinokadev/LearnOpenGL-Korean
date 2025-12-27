@@ -274,7 +274,7 @@
   <span class="md-ellipsis">
     
   
-    목차
+    시작하기
   
 
     
@@ -287,55 +287,6 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    목차
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    시작하기
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -576,14 +527,6 @@
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
     
   </ul>
 </nav>
@@ -703,7 +646,7 @@
 </div>
 <p>크로노스 그룹에서는 모든 OpenGL 버전에 대한 사양 문서를 공개합니다. 이것에 대해 관심이 있다면 3.3 버전(이번에 사용할 버전)의 OpenGL 사양을 <a href="https://www.opengl.org/registry/doc/glspec33.core.20100311.withchanges.pdf">여기</a>에서 확인할 수 있습니다. OpenGL에 대한 자세한 내용을 알고 싶다면 참고할 만한 자료입니다(대부분 구현 내용이 아닌 결과만 설명합니다). 또한 이 사양은 해당 함수의 정확한 작동 방식을 찾는 데 유용한 참고 자료입니다.</p>
 <h2 id="_1">코어 프로파일과 즉시 모드</h2>
-<p>예전에는 OpenGL을 사용하면 <span style="color: #228B22;">즉시 모드(Immediate mode)</span>(또는 <span style="color: #228B22;">고정 기능 파이프라인</span>이라고 함)로 개발할 수 있었습니다. 이는 그래픽을 그리는 사용하기 쉬운 방법이었습니다. OpenGL의 기능 대부분은 라이브러리 내부에 숨겨져 있었고 개발자는 OpenGL의 계산 방식을 크게 제어할 수 없었습니다. 결국 개발자들은 더 큰 유연성을 갈망하게 되었고, 시간이 지남에 따라 사양도 더욱 유연해졌습니다. 개발자는 그래픽에 대한 제어력을 더 많이 확보하게 되었습니다. 즉시 모드는 사용하고 이해하기 매우 쉽지만 매우 비효율적입니다. 이러한 이유로 OpenGL 사양에서는 3.2 버전부터 즉시 모드 사용을 권장하지 않게 되었고(deprecate), 개발자들이 <span style="color: #228B22;">코어 프로파일(Core-profile)</span>을 사용하여 개발하도록 동기를 부여하기 시작했습니다. 코어 프로파일 모드는 조금 더 현대적인 OpenGL 모드로, 오래되고 사용을 권장하지 않는 모든 기능이 제거된 모드입니다.</p>
+<p>예전에는 OpenGL을 사용하면 <strong class="g">즉시 모드(Immediate mode)</strong>(또는 <strong class="g">고정 기능 파이프라인</strong>이라고 함)로 개발할 수 있었습니다. 이는 그래픽을 그리는 사용하기 쉬운 방법이었습니다. OpenGL의 기능 대부분은 라이브러리 내부에 숨겨져 있었고 개발자는 OpenGL의 계산 방식을 크게 제어할 수 없었습니다. 결국 개발자들은 더 큰 유연성을 갈망하게 되었고, 시간이 지남에 따라 사양도 더욱 유연해졌습니다. 개발자는 그래픽에 대한 제어력을 더 많이 확보하게 되었습니다. 즉시 모드는 사용하고 이해하기 매우 쉽지만 매우 비효율적입니다. 이러한 이유로 OpenGL 사양에서는 3.2 버전부터 즉시 모드 사용을 권장하지 않게 되었고(deprecate), 개발자들이 <strong class="g">코어 프로파일(Core-profile)</strong>을 사용하여 개발하도록 동기를 부여하기 시작했습니다. 코어 프로파일 모드는 조금 더 현대적인 OpenGL 모드로, 오래되고 사용을 권장하지 않는 모든 기능이 제거된 모드입니다.</p>
 <div class="admonition note">
 <p>즉시 모드는 조금 더 사용하기 쉽지만 비효율적이고, 기능이 제한되어 있습니다. 그리고 코어 프로파일 모드에선 더 이상 사용되지 않는 함수 등이 제거되어 있고, 개발자가 그래픽 프로그래밍에 관여할 수 있는 부분이 조금 더 많은 현대적인 모드입니다.</p>
 </div>
@@ -719,50 +662,50 @@
 그리고 더 이상 업데이트 되지 않는것에서 두려움을 느낀다면 걱정하지 마세요. OpenGL은 아직도 많이 사용되는 API입니다.</p>
 </div>
 <h2 id="_2">확장 기능</h2>
-<p>OpenGL의 가장 큰 특징 중 하나는 확장 기능 지원입니다. 그래픽 회사가 새로운 기술이나 렌더링 최적화를 도입할 때마다 드라이버에 구현된 확장 기능을 통해 이를 확인할 수 있습니다. 애플리케이션이 실행되는 하드웨어가 이러한 <span style="color: #228B22;">확장 기능(Extensions)</span>을 지원하면 개발자는 해당 확장 기능이 제공하는 기능을 사용하여 더욱 고급적이고 효율적인 그래픽을 구현할 수 있습니다. 이렇게 하면 그래픽 개발자는 OpenGL이 향후 버전에 해당 기능을 포함할 때까지 기다릴 필요 없이, 그래픽 카드에서 해당 확장 기능을 지원하는지 확인하는 것만으로 새로운 렌더링 기술을 계속 사용할 수 있습니다. 일반적으로 확장 기능이 널리 사용되거나 매우 유용하면 향후 OpenGL 버전에 포함되는 경우가 많습니다. </p>
+<p>OpenGL의 가장 큰 특징 중 하나는 확장 기능 지원입니다. 그래픽 회사가 새로운 기술이나 렌더링 최적화를 도입할 때마다 드라이버에 구현된 확장 기능을 통해 이를 확인할 수 있습니다. 애플리케이션이 실행되는 하드웨어가 이러한 <strong class="g">확장 기능(Extensions)</strong>을 지원하면 개발자는 해당 확장 기능이 제공하는 기능을 사용하여 더욱 고급적이고 효율적인 그래픽을 구현할 수 있습니다. 이렇게 하면 그래픽 개발자는 OpenGL이 향후 버전에 해당 기능을 포함할 때까지 기다릴 필요 없이, 그래픽 카드에서 해당 확장 기능을 지원하는지 확인하는 것만으로 새로운 렌더링 기술을 계속 사용할 수 있습니다. 일반적으로 확장 기능이 널리 사용되거나 매우 유용하면 향후 OpenGL 버전에 포함되는 경우가 많습니다. </p>
 <p>개발자는 이러한 확장 기능을 사용하기 전에(또는 OpenGL 확장 라이브러리를 사용하기 전에) 사용 가능한 확장 기능이 있는지 확인해야 합니다. 이를 통해 개발자는 확장 기능의 사용 가능 여부에 따라 작업을 더 효율적으로 수행할 수 있습니다. </p>
-<pre><code class="language-cpp">if(GL_ARB_extension_name)
-{
-    // 멋진 신기술을 사용해 보세요.
-}
-else
-{
-    // 오래된 방법을 사용해봅시다.
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="p">(</span><span class="n">GL_ARB_extension_name</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 멋진 신기술을 사용해 보세요.</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 오래된 방법을 사용해봅시다.</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>OpenGL 버전 3.3에서는 대부분 기술에 확장 기능이 거의 필요하지 않지만, 필요한 경우 적절한 지침이 제공됩니다. </p>
 <h2 id="_3">상태 머신</h2>
-<p>OpenGL은 그 자체로 하나의 거대한 상태 머신(State machine)입니다. 상태 머신이란 OpenGL이 현재 어떻게 작동해야 하는지를 정의하는 변수들의 모음입니다. OpenGL의 상태는 일반적으로 OpenGL <span style="color: #228B22;">컨텍스트(context)</span>라고 불립니다. OpenGL을 사용할 때, 우리는 종종 몇 가지 옵션을 설정하거나 버퍼를 조작하여 상태를 변경한 다음, 현재 상태에 따라 렌더링합니다.</p>
+<p>OpenGL은 그 자체로 하나의 거대한 상태 머신(State machine)입니다. 상태 머신이란 OpenGL이 현재 어떻게 작동해야 하는지를 정의하는 변수들의 모음입니다. OpenGL의 상태는 일반적으로 OpenGL <strong class="g">컨텍스트(context)</strong>라고 불립니다. OpenGL을 사용할 때, 우리는 종종 몇 가지 옵션을 설정하거나 버퍼를 조작하여 상태를 변경한 다음, 현재 상태에 따라 렌더링합니다.</p>
 <p>예를 들어 삼각형 대신 선을 그리도록 OpenGL에 지시할 때마다, OpenGL이 그림을 그리는 방식을 설정하는 컨텍스트 변수를 변경하여 OpenGL의 상태를 바꿉니다. 컨텍스트를 변경하여 OpenGL에 선을 그리도록 지시하는 순간, 이후의 그리기 명령은 삼각형 대신 선을 그리게 됩니다.</p>
-<p>OpenGL을 사용하다 보면 컨텍스트를 변경하는 여러 <span style="color: #228B22;">상태 변경(state-changing)</span> 함수와 OpenGL의 현재 상태에 따라 연산을 수행하는 여러 <span style="color: #228B22;">상태 사용(state-using)</span> 함수를 접하게 됩니다. OpenGL이 기본적으로 하나의 거대한 상태 머신이라는 점을 명심하면 대부분의 기능을 쉽게 이해할 수 있습니다.</p>
+<p>OpenGL을 사용하다 보면 컨텍스트를 변경하는 여러 <strong class="g">상태 변경(state-changing)</strong> 함수와 OpenGL의 현재 상태에 따라 연산을 수행하는 여러 <strong class="g">상태 사용(state-using)</strong> 함수를 접하게 됩니다. OpenGL이 기본적으로 하나의 거대한 상태 머신이라는 점을 명심하면 대부분의 기능을 쉽게 이해할 수 있습니다.</p>
 <h2 id="_4">객체</h2>
-<p>OpenGL 라이브러리는 C 언어로 작성되었으며 다른 언어로 파생될 수 있는 부분이 많지만, 핵심은 여전히 ​​C 라이브러리라는 점입니다. C 언어의 여러 구문들이 다른 고급 언어로 잘 변환되지 않는 경우가 많기 때문에, OpenGL은 여러 추상화 개념을 염두에 두고 개발되었습니다. 그중 하나가 OpenGL의 <span style="color: #228B22;">객체(object)</span>입니다.</p>
-<p>OpenGL에서 객체는 OpenGL 상태의 일부를 나타내는 옵션들의 모음입니다. 예를 들어, 드로잉 창의 설정을 나타내는 객체가 있을 수 있으며, 이 객체를 통해 창의 크기, 지원하는 색상 수 등을 설정할 수 있습니다. 객체는 C 언어의 구조체와 유사한 형태로 시각화할 수 있습니다:</p>
-<pre><code class="language-c">struct object_name {
-    float  option1;
-    int    option2;
-    char[] name;
-};
-</code></pre>
-<p>일반적으로 객체를 사용하려는 경우 다음과 같은 형태를 띨 수 있습니다(OpenGL의 컨텍스트는 큰 구조체로 시각화됨).</p>
-<pre><code class="language-c">// OpenGL의 상태
-struct OpenGL_Context {
-    ...
-    object_name* object_Window_Target;
-    ...     
-};
-</code></pre>
-<pre><code class="language-c">// 객체 만들기
-unsigned int objectId = 0;
-glGenObject(1, &amp;objectId);
-// 컨텍스트에 객체를 바인딩하고 할당
-glBindObject(GL_WINDOW_TARGET, objectId);
-// 현재 GL_WINDOW_TARGET에 바인딩된 객체의 옵션 설정
-glSetObjectOption(GL_WINDOW_TARGET, GL_OPTION_WINDOW_WIDTH,  800);
-glSetObjectOption(GL_WINDOW_TARGET, GL_OPTION_WINDOW_HEIGHT, 600);
-// 컨텍스트 대상을 기본값으로 되돌리기
-glBindObject(GL_WINDOW_TARGET, 0);
-</code></pre>
+<p>OpenGL 라이브러리는 C 언어로 작성되었으며 다른 언어로 파생될 수 있는 부분이 많지만, 핵심은 여전히 ​​C 라이브러리라는 점입니다. C 언어의 여러 구문들이 다른 고급 언어로 잘 변환되지 않는 경우가 많기 때문에, OpenGL은 여러 추상화 개념을 염두에 두고 개발되었습니다. 그중 하나가 OpenGL의 <strong class="g">객체(object)</strong>입니다.</p>
+<p>OpenGL에서 객체는 OpenGL 상태의 일부를 나타내는 옵션들의 모음입니다. 예를 들어, 드로잉 창의 설정을 나타내는 객체가 있을 수 있으며, 이 객체를 통해 창의 크기, 지원하는 색상 수 등을 설정할 수 있습니다. 객체는 C 언어의 구조체와 유사한 형태로 시각화할 수 있습니다:
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">object_name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w">  </span><span class="n">option1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">    </span><span class="n">option2</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="p">[]</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+일반적으로 객체를 사용하려는 경우 다음과 같은 형태를 띨 수 있습니다(OpenGL의 컨텍스트는 큰 구조체로 시각화됨).
+<div class="highlight"><pre><span></span><code><span class="c1">// OpenGL의 상태</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">OpenGL_Context</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="n">object_name</span><span class="o">*</span><span class="w"> </span><span class="n">object_Window_Target</span><span class="p">;</span>
+<span class="w">    </span><span class="p">...</span><span class="w">     </span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 객체 만들기</span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">objectId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="n">glGenObject</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">objectId</span><span class="p">);</span>
+<span class="c1">// 컨텍스트에 객체를 바인딩하고 할당</span>
+<span class="n">glBindObject</span><span class="p">(</span><span class="n">GL_WINDOW_TARGET</span><span class="p">,</span><span class="w"> </span><span class="n">objectId</span><span class="p">);</span>
+<span class="c1">// 현재 GL_WINDOW_TARGET에 바인딩된 객체의 옵션 설정</span>
+<span class="n">glSetObjectOption</span><span class="p">(</span><span class="n">GL_WINDOW_TARGET</span><span class="p">,</span><span class="w"> </span><span class="n">GL_OPTION_WINDOW_WIDTH</span><span class="p">,</span><span class="w">  </span><span class="mi">800</span><span class="p">);</span>
+<span class="n">glSetObjectOption</span><span class="p">(</span><span class="n">GL_WINDOW_TARGET</span><span class="p">,</span><span class="w"> </span><span class="n">GL_OPTION_WINDOW_HEIGHT</span><span class="p">,</span><span class="w"> </span><span class="mi">600</span><span class="p">);</span>
+<span class="c1">// 컨텍스트 대상을 기본값으로 되돌리기</span>
+<span class="n">glBindObject</span><span class="p">(</span><span class="n">GL_WINDOW_TARGET</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></p>
 <p>이 작은 코드 조각은 OpenGL을 사용할 때 자주 접하게 되는 워크플로입니다. 먼저 객체를 생성하고 해당 객체에 대한 참조를 ID로 저장합니다(실제 객체 데이터는 내부적으로 저장됩니다). 그런 다음 객체 ID(objectId)를 사용하여 윈도우 대상 컨텍스트(<code>GL_WINDOW_TARGET</code>)에 객체를 바인딩합니다. 다음으로 윈도우 옵션을 설정하고 마지막으로 윈도우 대상 컨텍스트의 현재 객체 ID를 0으로 설정하여 객체 바인딩을 해제합니다. 설정한 옵션은 <code>objectId</code>로 참조되는 객체에 저장되며, 객체를 <code>GL_WINDOW_TARGET</code>에 다시 바인딩하는 즉시 설정 값이 원래대로 되돌아갑시다.</p>
 <div class="admonition warning">
 <p>지금까지 제공된 코드 예제는 OpenGL의 작동 방식을 대략적으로 보여주는 것에 불과하며, 책 전체를 통해 실제 예제를 충분히 접하게 될 것입니다.</p>

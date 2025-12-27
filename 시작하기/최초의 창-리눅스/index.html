@@ -268,7 +268,7 @@
   <span class="md-ellipsis">
     
   
-    목차
+    시작하기
   
 
     
@@ -281,53 +281,6 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    목차
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    시작하기
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -455,14 +408,6 @@
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
     
   </ul>
 </nav>
@@ -561,21 +506,21 @@
 <p>리눅스에는 CMake GUI보다는 CLI를 더 많이 사용합니다. 진정한 개발자가 되려면 CMake CLI의 사용법을 익히는 것이 좋습니다. 그러므로 우리는 CMake CLI 버전의 사용법을 알아봅시다!</p>
 <h2 id="cmake-cli">CMake CLI</h2>
 <p>여기까지 오셨다면 CMake를 설치할 줄은 안다고 생각하지만 혹시 모를수도 있으니 설명드리겠습니다. </p>
-<p>우분투에선 아래 명령어를 차례대로 실행하기만 하면 됩니다.</p>
-<pre><code>$ sudo apt update
+<p>우분투에선 아래 명령어를 차례대로 실행하기만 하면 됩니다.
+<div class="highlight"><pre><span></span><code>$ sudo apt update
 $ sudo apt install cmake
-</code></pre>
-<p>다른 배포판도 비슷합니다. 인터넷에 검색해보세요.</p>
+</code></pre></div>
+다른 배포판도 비슷합니다. 인터넷에 검색해보세요.</p>
 <div class="admonition tip">
 <p>이 글을 작성할 시점에는 GLFW의 마지막 버전이 3.4 버전이였음을 참고하세요.</p>
 </div>
-<p>GLFW 다운로드 홈페이지에서 다운로드 받은 소스 패키지 압축을 풀고, 압축을 푼 폴더에서 터미널을 열겠습니다. 제대로 설치되었는지 확인하기 위해 터미널에 <code>cmake</code> 명령어를 사용해 보겠습니다. CMake의 사용법이 나온다면 설치가 제대로 된것입니다. 아래 명령어를 입력해 보겠습니다.</p>
-<pre><code>$ cmake -S . -B build
-</code></pre>
+<p>GLFW 다운로드 홈페이지에서 다운로드 받은 소스 패키지 압축을 풀고, 압축을 푼 폴더에서 터미널을 열겠습니다. 제대로 설치되었는지 확인하기 위해 터미널에 <code>cmake</code> 명령어를 사용해 보겠습니다. CMake의 사용법이 나온다면 설치가 제대로 된것입니다. 아래 명령어를 입력해 보겠습니다.
+<div class="highlight"><pre><span></span><code>$ cmake -S . -B build
+</code></pre></div></p>
 <p>매우 간단한 명령어입니다. GLFW 소스 폴더를 빌드하고, 결과물은 <code>build</code> 폴더에 둔다는 뜻입니다. 그리고 이제 인클루드 폴더를 프로젝트 폴더로 가져와야 할것이라고 생각할 것입니다. 하지만 아닙니다. 현대 리눅스는 시스템에 인클루드와 라이브러리 빌드를 설치할 수 있습니다. 아래의 명령어로 라이브러리를 설치하세요.</p>
-<pre><code>$ cmake --build build # GLFW를 빌드합니다.
+<div class="highlight"><pre><span></span><code>$ cmake --build build # GLFW를 빌드합니다.
 $ sudo cmake --install build # 그리고 설치합니다.
-</code></pre>
+</code></pre></div>
 <h2 id="_1">첫 발걸음</h2>
 <p>우리는 VSCode를 사용하여 프로젝트를 진행할 것입니다. VSCode를 설치하고, 폴더를 하나 만들어서 VSCode로 여세요. 아래와 같은 화면을 마주할 수 있을겁니다.</p>
 <p><img alt="" src="../../static/vscode.png" /></p>
@@ -584,19 +529,19 @@ $ sudo cmake --install build # 그리고 설치합니다.
 <p>우리는 위에서 CMake를 활용해 빌드했습니다. 그리고 설치했습니다. 이제 링킹만 남았습니다.</p>
 <p>우리는 GCC를 사용할 것입니다. 기본적으로 <code>gcc [파일이름]</code>와 같은 형태로 C언어 파일을 컴파일 할수 있습니다. OpenGL을 링킹해보겠습니다. 링커 설정에 <code>-lGL</code> 옵션을 추가하여 시스템에 내장된 <code>libGL.so</code> 라이브러리를 링킹할 수 있습니다. 라이브러리를 찾을 수 없는 경우 Mesa, NVidia 또는 AMD 개발 패키지를 설치해야 할 수도 있습니다. 명령어는 <code>gcc main.c -lGL</code> 와 같은 형태일 것입니다.</p>
 <p>그런 다음, 링커 설정에 GLFW를 링킹해야 합니다. <code>-lglfw3</code> 와 같은 옵션을 사용하여 링킹할수 있습니다. OpenGL 라이브러리를 모두 추가했으면 명령어는 <code>gcc main.c -lGL -lglfw3</code> 와 같은 형태일 것입니다. 이제 다음과 같이 C언어 파일에 GLFW 헤더 파일을 포함할 수 있습니다.</p>
-<pre><code class="language-c">#include &lt;GLFW/glfw3.h&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;GLFW/glfw3.h&gt;</span>
+</code></pre></div>
 <div class="admonition tip">
 <p>환경에 따라 다음과 같은 추가 라이브러리가 필요할 수 있습니다. <code>-lX11 -lpthread -lXrandr -lXi -ldl</code></p>
 </div>
 <p>이것으로 GLFW의 설정 및 구성이 완료되었습니다.</p>
 <h3 id="_3">더 낫게 만들기</h3>
 <p>매번 모든 링킹 옵션을 외워서 사용하는것은 번거로울 수 있습니다. 이것에 대한 유명한 해답으로 <code>pkg-config</code> 을 사용할 수 있습니다. 먼저 GLFW가 제대로 설치되었고, 인식되었는지 확인합니다.</p>
-<pre><code>$ pkg-config --modversion glfw3
-</code></pre>
+<div class="highlight"><pre><span></span><code>$ pkg-config --modversion glfw3
+</code></pre></div>
 <p>제대로 설치되었다면 GLFW의 버전이 나올 것입니다. 우리는 이제 긴 링킹 옵션 대신 다음 명령어를 사용할 수 있습니다.</p>
-<pre><code>$ gcc main.c $(pkg-config --cflags --libs glfw3)
-</code></pre>
+<div class="highlight"><pre><span></span><code>$ gcc main.c $(pkg-config --cflags --libs glfw3)
+</code></pre></div>
 <p>모두 마쳤다면 당신은 이제 리눅스 CMake를 모두 배웠습니다! 아직 배울것이 많습니다. 이제 다시 <a href="../%EC%B5%9C%EC%B4%88%EC%9D%98%20%EC%B0%BD/">최초의 창</a>으로 이동하여 계속 진행하세요.(GLAD가 남았습니다.)</p>
 
 
