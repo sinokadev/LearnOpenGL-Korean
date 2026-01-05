@@ -17,7 +17,6 @@ extra_css:
 
 nav:
   - 소개: index.md
-  - GL 문서: GL-docs/
   - 시작하기:
     - OpenGL: 시작하기/OpenGL.md
     - 최초의 창: 시작하기/최초의 창.md
