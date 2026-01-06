@@ -535,6 +535,45 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        더 많은 속성!
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        우리가 만든 셰이더 클래스
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="우리가 만든 셰이더 클래스">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파일에서 읽기
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -644,6 +683,45 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        더 많은 속성!
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        우리가 만든 셰이더 클래스
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="우리가 만든 셰이더 클래스">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파일에서 읽기
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -703,7 +781,7 @@
 <li>vecn: n개의 부동소수점(float) 값로 이루어진 기본 벡터.</li>
 <li>bvecn: n개의 불리언 값으로 이루어진 벡터.</li>
 <li>ivecn: n개의 정수 값으로 이루어진 벡터.</li>
-<li>uvecn: n개의 부호없는 정수(unsigned integer) 값으로 이루어진 벡터.</li>
+<li>uvecn: n개의 부호 없는 정수(unsigned integer) 값으로 이루어진 벡터.</li>
 <li>dvecn: n개의 더블(double) 값으로 이루어진 벡터.</li>
 </ul>
 <p>대부분의 경우 부동소수점 숫자가 우리의 목적에 충분하기 때문에 기본적인 vecn을 사용하게 될 것입니다.</p>
@@ -786,13 +864,252 @@
 <div class="admonition tip">
 <p>OpenGL은 본질적으로 C 라이브러리이기 때문에 함수 오버로딩을 기본적으로 지원하지 않습니다. 따라서 함수를 여러 유형으로 호출할 수 있는 경우, OpenGL은 필요한 각 유형에 대해 새로운 함수를 정의합니다. <code>glUniform</code> 함수가 바로 그 대표적인 예입니다. 이 함수는 설정하려는 유니폼 유형에 맞는 특정 접미사를 필요로 합니다. 가능한 접미사 몇 가지는 다음과 같습니다.</p>
 <ul>
-<li>f: 이 함수는 값으로 부동 소수점을 기대합니다.</li>
-<li>i: 이 함수는 값으로 정수를 기대합니다.</li>
-<li>ui: 이 함수는 값으로 부호 없는 정수를 기대합니다.</li>
+<li>f: 이 함수는 값으로 부동 소수점(float)을 기대합니다.</li>
+<li>i: 이 함수는 값으로 정수(int)를 기대합니다.</li>
+<li>ui: 이 함수는 값으로 부호 없는 정수(unsigned int)를 기대합니다.</li>
 <li>3f: 이 함수는 값으로 3개의 부동 소수점 숫자를 기대합니다.</li>
-<li>fv: 이 함수는 값으로 float형 벡터/배열을 기대합니다.</li>
+<li>fv: 이 함수는 값으로 float형 벡터 또는 배열을 기대합니다.</li>
 </ul>
+<p>OpenGL 옵션을 설정하려면 해당 유형에 맞는 오버로드된 함수를 선택하기만 하면 됩니다. 이 경우 유니폼 변수에 4개의 float 값을 개별적으로 설정하려고 하므로 <code>glUniform4f</code> 함수를 통해 데이터를 전달합니다(fv 버전을 사용할 수도 있습니다).</p>
 </div>
+<p>이제 유니폼 변수의 값을 설정하는 방법을 알았으니, 이를 렌더링에 사용할 수 있습니다. 색상이 점진적으로 변하도록 하려면 매 프레임마다 이 유니폼 변수를 업데이트해야 합니다. 그렇지 않으면 한 번만 설정하면 삼각형이 단색으로 유지됩니다. 따라서 <code>greenValue</code>를 계산하고 매 렌더링 반복마다 유니폼 변수를 업데이트합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">glfwWindowShouldClose</span><span class="p">(</span><span class="n">window</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// input</span>
+<span class="w">    </span><span class="n">processInput</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// render</span>
+<span class="w">    </span><span class="c1">// clear the colorbuffer</span>
+<span class="w">    </span><span class="n">glClearColor</span><span class="p">(</span><span class="mf">0.2f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">);</span>
+<span class="w">    </span><span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// be sure to activate the shader</span>
+<span class="w">    </span><span class="n">glUseProgram</span><span class="p">(</span><span class="n">shaderProgram</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// update the uniform color</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">timeValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glfwGetTime</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">greenValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">timeValue</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0f</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">vertexColorLocation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shaderProgram</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ourColor&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">glUniform4f</span><span class="p">(</span><span class="n">vertexColorLocation</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="n">greenValue</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// now render the triangle</span>
+<span class="w">    </span><span class="n">glBindVertexArray</span><span class="p">(</span><span class="n">VAO</span><span class="p">);</span>
+<span class="w">    </span><span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// swap buffers and poll IO events</span>
+<span class="w">    </span><span class="n">glfwSwapBuffers</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+<span class="w">    </span><span class="n">glfwPollEvents</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>이 코드는 이전 코드를 비교적 간단하게 변형한 것입니다. 이번에는 삼각형을 그리기 전에 매 프레임마다 uniform 변수를 업데이트합니다. uniform 변수를 올바르게 업데이트하면 삼각형의 색상이 녹색에서 검은색으로, 다시 녹색으로 점차 변하는 것을 볼 수 있습니다.</p>
+<figure class="video_container">
+  <video controls="true" allowfullscreen="true">
+    <source src="/static/shaders.webm" type="video/webm">
+    <source src="/static/shaders.mp4" type="video/mp4">
+  </video>
+</figure>
+
+<p>막히는 부분이 있으면 <a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/3.1.shaders_uniform/shaders_uniform.cpp">여기</a>에서 소스 코드를 확인하세요.</p>
+<p>보시다시피, 유니폼은 매 프레임마다 변경될 수 있는 속성을 설정하거나 애플리케이션과 셰이더 간에 데이터를 교환하는 데 유용한 도구입니다. 하지만 각 정점에 색상을 설정하려면 어떻게 해야 할까요? 이 경우 정점의 개수만큼 유니폼을 선언해야 합니다. 더 나은 해결책은 정점 속성에 더 많은 데이터를 포함하는 것이며, 지금부터 그 방법을 살펴보겠습니다.</p>
+<h3 id="_6">더 많은 속성!</h3>
+<p>이전 장에서 VBO를 채우고, 정점 속성 포인터를 구성하고, 이 모든 것을 VAO에 저장하는 방법을 살펴보았습니다. 이번에는 정점 데이터에 색상 데이터도 추가하려고 합니다. 정점 배열에 3개의 float형 색상 데이터를 추가할 것입니다. 삼각형의 각 꼭짓점에 각각 빨강, 초록, 파랑 ​​색상을 할당합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">float</span><span class="w"> </span><span class="n">vertices</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// positions         // colors</span>
+<span class="w">     </span><span class="mf">0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w">  </span><span class="mf">1.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w">   </span><span class="c1">// bottom right</span>
+<span class="w">    </span><span class="mf">-0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w">  </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w">   </span><span class="c1">// bottom left</span>
+<span class="w">     </span><span class="mf">0.0f</span><span class="p">,</span><span class="w">  </span><span class="mf">0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w">  </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="w">    </span><span class="c1">// top </span>
+<span class="p">};</span><span class="w">    </span>
+</code></pre></div>
+<p>이제 정점 셰이더로 보낼 데이터가 더 많아졌으므로, 정점 셰이더가 색상 값을 정점 속성 입력으로 받도록 조정해야 합니다. 레이아웃 지정자를 사용하여 <code>aColor</code> 속성의 위치를 ​​1로 설정했음에 유의하세요.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#version 330 core</span>
+<span class="k">layout</span><span class="w"> </span><span class="p">(</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">aPos</span><span class="p">;</span><span class="w">   </span><span class="c1">// the position variable has attribute position 0</span>
+<span class="k">layout</span><span class="w"> </span><span class="p">(</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">aColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// the color variable has attribute position 1</span>
+
+<span class="k">out</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">ourColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// output a color to the fragment shader</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="nb">gl_Position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">aPos</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ourColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// set ourColor to the input color we got from the vertex data</span>
+<span class="p">}</span><span class="w">  </span>
+</code></pre></div>
+<p>이제 프래그먼트의 색상에 유니폼 변수를 사용하지 않고 <code>ourColor</code> 출력 변수를 사용하므로 프래그먼트 셰이더도 변경해야 합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#version 330 core</span>
+<span class="k">out</span><span class="w"> </span><span class="kt">vec4</span><span class="w"> </span><span class="n">FragColor</span><span class="p">;</span><span class="w">  </span>
+<span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">ourColor</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">FragColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">ourColor</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>정점 속성을 하나 더 추가하고 VBO의 메모리를 업데이트했기 때문에 정점 속성 포인터를 다시 구성해야 합니다. VBO 메모리에 업데이트된 데이터는 이제 다음과 같습니다.</p>
+<p><img alt="" src="../../static/vertex_attribute_pointer_interleaved.png" /></p>
+<p>현재 레이아웃을 알고 있으므로 <code>glVertexAttribPointer</code>를 사용하여 정점 형식을 업데이트할 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// position attribute</span>
+<span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">GL_FLOAT</span><span class="p">,</span><span class="w"> </span><span class="n">GL_FALSE</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="c1">// color attribute</span>
+<span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">GL_FLOAT</span><span class="p">,</span><span class="w"> </span><span class="n">GL_FALSE</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)(</span><span class="mi">3</span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">)));</span>
+<span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
+<p><code>glVertexAttribPointer</code> 함수의 처음 몇 가지 인수는 비교적 간단합니다. 이번에는 속성 위치 1에 있는 정점 속성을 구성합니다. 색상 값은 3개의 float 크기이며 값을 정규화하지 않습니다.</p>
+<p>이제 정점 속성이 두 개이므로 스트라이드 값을 다시 계산해야 합니다. 데이터 배열에서 다음 속성 값(예: 위치 벡터의 다음 x 성분)을 얻으려면 위치 값 3개와 색상 값 3개를 포함하여 총 6개의 float만큼 오른쪽으로 이동해야 합니다. 따라서 스트라이드 값은 float 크기의 6배인 바이트 단위(24바이트)가 됩니다.<br />
+또한 이번에는 오프셋을 지정해야 합니다. 각 정점에 대해 위치 정점 속성이 먼저 오므로 오프셋을 0으로 설정합니다. 색상 속성은 위치 데이터 다음에 시작되므로 오프셋은 3 * sizeof(float) 바이트(= 12바이트)입니다.</p>
+<p>애플리케이션을 실행하면 다음과 같은 이미지가 나타납니다.</p>
+<p><img alt="" src="../../static/shaders3.png" /></p>
+<p>막히는 부분이 있으면 <a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/3.2.shaders_interpolation/shaders_interpolation.cpp">여기</a>에서 소스 코드를 확인하세요.</p>
+<p>이미지가 예상과 다를 수 있는 이유는, 현재 보이는 것처럼 방대한 색상 팔레트가 아닌 단 3가지 색상만 제공했기 때문입니다. 이는 프래그먼트 셰이더의 <strong class="g">프래그먼트 보간(fragment interpolation)</strong>이라는 기능 때문입니다. 삼각형을 렌더링할 때 래스터화 단계에서는 일반적으로 처음에 지정한 정점 수보다 훨씬 많은 프래그먼트가 생성됩니다. 그러면 래스터라이저는 삼각형 모양에서 각 프래그먼트의 위치를 ​​​​결정합니다.<br />
+이러한 위치를 기반으로 프래그먼트 셰이더의 모든 입력 변수를 보간합니다. 예를 들어, 위쪽 점이 녹색이고 아래쪽 점이 파란색인 선이 있다고 가정해 보겠습니다. 프래그먼트 셰이더가 선의 약 70% 지점에 있는 프래그먼트에서 실행되면, 결과적으로 해당 프래그먼트의 색상 입력 속성은 녹색과 파란색의 선형 조합, 더 정확하게는 30% 파란색과 70% 녹색이 됩니다.</p>
+<p>삼각형에서 일어난 일이 바로 이것입니다. 꼭짓점이 3개이므로 색상도 3개입니다. 삼각형의 픽셀들을 보면 대략 5만 개 정도의 프래그먼트가 포함되어 있을 것으로 추정되는데, 프래그먼트 셰이더가 이 픽셀들 사이에서 색상을 보간한 것입니다. 색상을 자세히 살펴보면 모든 것이 이해가 될 것입니다. 빨간색에서 파란색으로 갈수록 먼저 보라색을 거쳐 다시 파란색으로 변합니다. 프래그먼트 보간은 프래그먼트 셰이더의 모든 입력 속성에 적용됩니다.</p>
+<h2 id="_7">우리가 만든 셰이더 클래스</h2>
+<p>셰이더를 작성하고 컴파일하고 관리하는 것은 상당히 번거로울 수 있습니다. 셰이더에 대한 마지막 단계로, 디스크에서 셰이더를 읽어 컴파일 및 링크하고 오류를 검사하며 사용하기 쉬운 셰이더 클래스를 만들어 우리의 작업을 좀 더 간편하게 만들어 보겠습니다. 또한 이를 통해 지금까지 배운 지식들을 유용한 추상 객체로 캡슐화하는 방법에 대한 아이디어를 얻을 수 있을 것입니다.</p>
+<p>학습 및 이식성을 위해 셰이더 클래스 전체를 헤더 파일에 작성하겠습니다. 먼저 필요한 헤더 파일을 추가하고 클래스 구조를 정의해 보겠습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#ifndef SHADER_H</span>
+<span class="cp">#define SHADER_H</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;glad/glad.h&gt;</span><span class="c1"> // 필요한 모든 OpenGL 헤더를 받을수 있습니다.</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Shader</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 프로그램 ID</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ID</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 생성자는 셰이더를 읽고 생성합니다.</span>
+<span class="w">    </span><span class="n">Shader</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">vertexPath</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fragmentPath</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 셰이더 사용/활성화</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">use</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 유니폼 관련 유틸리티 함수</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">setBool</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">setInt</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w">   </span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">setFloat</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp">#endif</span>
+</code></pre></div>
+<div class="admonition tip">
+<p>헤더 파일 맨 위에 몇 가지 <strong class="g">전처리 지시문(preprocessor directives)</strong>을 사용했습니다. 이 몇줄의 코드 줄들은 컴파일러에게 해당 헤더 파일이 아직 포함되지 않은 경우에만 포함하고 컴파일하도록 지시합니다. 이는 여러 파일에서 셰이더 헤더를 포함하고 있더라도 마찬가지입니다. 이렇게 하면 링크 충돌을 방지할 수 있습니다.</p>
+</div>
+<p>셰이더 클래스는 셰이더 프로그램의 ID를 저장합니다. 생성자는 정점 셰이더와 프래그먼트 셰이더의 소스 코드 파일 경로를 각각 매개변수로 받는데, 이 경로는 간단한 텍스트 파일로 디스크에 저장할 수 있습니다. 편의성을 높이기 위해 몇 가지 유틸리티 함수도 추가했습니다. <code>use</code> 함수는 셰이더 프로그램을 활성화하고, <code>set...</code> 함수들은 유니폼 변수의 위치를 ​​조회하고 값을 설정합니다.</p>
+<h3 id="_8">파일에서 읽기</h3>
+<p>우리는 C++ 파일 스트림을 사용하여 파일의 내용을 여러 문자열 객체로 읽어보겠습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Shader</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">vertexPath</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fragmentPath</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. filePath에서 정점/프래그먼트 소스 코드를 가져옵니다.</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">vertexCode</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">fragmentCode</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">vShaderFile</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">fShaderFile</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// ifstream 객체가 예외를 발생시킬 수 있도록 보장합니다.</span>
+<span class="w">    </span><span class="n">vShaderFile</span><span class="p">.</span><span class="n">exceptions</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="o">::</span><span class="n">failbit</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="o">::</span><span class="n">badbit</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fShaderFile</span><span class="p">.</span><span class="n">exceptions</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="o">::</span><span class="n">failbit</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="o">::</span><span class="n">badbit</span><span class="p">);</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 파일 열기</span>
+<span class="w">        </span><span class="n">vShaderFile</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">vertexPath</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fShaderFile</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">fragmentPath</span><span class="p">);</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">vShaderStream</span><span class="p">,</span><span class="w"> </span><span class="n">fShaderStream</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// 파일 버퍼의 내용을 스트림으로 읽어들입니다.</span>
+<span class="w">        </span><span class="n">vShaderStream</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">vShaderFile</span><span class="p">.</span><span class="n">rdbuf</span><span class="p">();</span>
+<span class="w">        </span><span class="n">fShaderStream</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">fShaderFile</span><span class="p">.</span><span class="n">rdbuf</span><span class="p">();</span><span class="w">       </span>
+<span class="w">        </span><span class="c1">// 파일 핸들러 닫기</span>
+<span class="w">        </span><span class="n">vShaderFile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="w">        </span><span class="n">fShaderFile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// 스트림을 문자열로 변환</span>
+<span class="w">        </span><span class="n">vertexCode</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">vShaderStream</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+<span class="w">        </span><span class="n">fragmentCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fShaderStream</span><span class="p">.</span><span class="n">str</span><span class="p">();</span><span class="w">     </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="o">::</span><span class="n">failure</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">vShaderCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vertexCode</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fShaderCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fragmentCode</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span>
+<span class="w">    </span><span class="p">[...]</span>
+</code></pre></div>
+<p>다음으로 셰이더를 컴파일하고 링크해야 합니다. 컴파일/링크가 실패했는지 여부와 실패했을 경우 컴파일 오류를 출력하는 것도 중요합니다. 이는 디버깅 시 매우 유용하며, 나중에 이러한 오류 로그가 필요할 것입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 2. 컴파일 셰이더</span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">vertex</span><span class="p">,</span><span class="w"> </span><span class="n">fragment</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">success</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">infoLog</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
+
+<span class="c1">// 정점 셰이더</span>
+<span class="n">vertex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_VERTEX_SHADER</span><span class="p">);</span>
+<span class="n">glShaderSource</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vShaderCode</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">glCompileShader</span><span class="p">(</span><span class="n">vertex</span><span class="p">);</span>
+<span class="c1">// 컴파일 오류가 있으면 출력</span>
+<span class="n">glGetShaderiv</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span><span class="w"> </span><span class="n">GL_COMPILE_STATUS</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">success</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">glGetShaderInfoLog</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">infoLog</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;ERROR::SHADER::VERTEX::COMPILATION_FAILED</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">infoLog</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 프래그먼트 셰이더도 마찬가지입니다.</span>
+<span class="p">[...]</span>
+
+<span class="c1">// 셰이더 프로그램</span>
+<span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glCreateProgram</span><span class="p">();</span>
+<span class="n">glAttachShader</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">vertex</span><span class="p">);</span>
+<span class="n">glAttachShader</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">fragment</span><span class="p">);</span>
+<span class="n">glLinkProgram</span><span class="p">(</span><span class="n">ID</span><span class="p">);</span>
+<span class="c1">// 링킹 오류가 있으면 출력합니다.</span>
+<span class="n">glGetProgramiv</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">GL_LINK_STATUS</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">success</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">glGetProgramInfoLog</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">infoLog</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;ERROR::SHADER::PROGRAM::LINKING_FAILED</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">infoLog</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 셰이더는 현재 프로그램에 연결되어 있으므로 더 이상 필요하지 않기 때문에 삭제합니다.</span>
+<span class="n">glDeleteShader</span><span class="p">(</span><span class="n">vertex</span><span class="p">);</span>
+<span class="n">glDeleteShader</span><span class="p">(</span><span class="n">fragment</span><span class="p">);</span>
+</code></pre></div>
+<p>use 함수는 간단합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">use</span><span class="p">()</span><span class="w"> </span>
+<span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">glUseProgram</span><span class="p">(</span><span class="n">ID</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<p>마찬가지로 모든 유니폼 설정 함수에 대해서도 마찬가지입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">setBool</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span><span class="w">         </span>
+<span class="w">    </span><span class="n">glUniform1i</span><span class="p">(</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">c_str</span><span class="p">()),</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">value</span><span class="p">);</span><span class="w"> </span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setInt</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">glUniform1i</span><span class="p">(</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">c_str</span><span class="p">()),</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"> </span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setFloat</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">glUniform1f</span><span class="p">(</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">c_str</span><span class="p">()),</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"> </span>
+<span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<p>자, 이렇게 해서 <a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/includes/learnopengl/shader_s.h">셰이더 클래스</a>가 완성되었습니다. 셰이더 클래스 사용법은 매우 간단합니다. 셰이더 객체를 한 번 생성한 후에는 바로 사용하기 시작하면 됩니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Shader</span><span class="w"> </span><span class="n">ourShader</span><span class="p">(</span><span class="s">&quot;path/to/shaders/shader.vs&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;path/to/shaders/shader.fs&quot;</span><span class="p">);</span>
+<span class="p">[...]</span>
+<span class="k">while</span><span class="p">(...)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ourShader</span><span class="p">.</span><span class="n">use</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ourShader</span><span class="p">.</span><span class="n">setFloat</span><span class="p">(</span><span class="s">&quot;someUniform&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DrawStuff</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>여기서는 정점 셰이더와 프래그먼트 셰이더 소스 코드를 shader.vs와 shader.fs라는 두 파일에 저장했습니다. 셰이더 파일 이름은 원하는 대로 자유롭게 지정할 수 있지만, 개인적으로는 .vs와 .fs 확장자가 직관적이라고 생각합니다.</p>
+<p>새로 개발한 셰이더 클래스를 사용한 소스 코드를 <a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/3.3.shaders_class/shaders_class.cpp">여기</a>에서 확인할 수 있습니다. 그리고 <a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/includes/learnopengl/shader_s.h">여기</a>에서 셰이더 클래스의 소스 코드를 볼 수 있습니다.</p>
+<h1 id="_9">연습 문제</h1>
+<ul>
+<li>정점 셰이더를 조정하여 삼각형이 거꾸로 되도록 해보세요. (<a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/3.4.shaders_exercise1/shaders_exercise1.cpp">해결 방법</a>)</li>
+<li>유니폼 변수를 통해 수평 오프셋을 지정하고, 이 오프셋 값을 사용하여 정점 셰이더에서 삼각형을 화면 오른쪽으로 이동시키세요. (<a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/3.5.shaders_exercise2/shaders_exercise2.cpp">해결 방법</a>)</li>
+<li><code>out</code> 키워드를 사용하여 정점 위치를 프래그먼트 셰이더로 출력하고, 프래그먼트의 색상을 이 정점 위치와 같게 설정하세요(정점 위치 값이 삼각형 전체에 걸쳐 보간되는 방식을 확인하세요). 이 작업을 완료했다면 다음 질문에 답해 보세요. 삼각형의 왼쪽 아래 변이 검은색인 이유는 무엇일까요? (<a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/3.6.shaders_exercise3/shaders_exercise3.cpp">해결 방법</a>)</li>
+</ul>
 
 
 
