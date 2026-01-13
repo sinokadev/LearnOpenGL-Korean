@@ -594,6 +594,84 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="벡터-벡터 곱셈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        내적
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        외적
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        행렬
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="행렬">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        덧셈과 뺄셈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        행렬-스칼라 곱셈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        행렬-행렬 곱셈
+      
+    </span>
+  </a>
+  
 </li>
         
       </ul>
@@ -708,6 +786,84 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="벡터-벡터 곱셈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        내적
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        외적
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        행렬
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="행렬">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        덧셈과 뺄셈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        행렬-스칼라 곱셈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        행렬-행렬 곱셈
+      
+    </span>
+  </a>
+  
 </li>
         
       </ul>
@@ -745,7 +901,7 @@
 <p>하지만 변환을 완전히 이해하려면 행렬을 논하기 전에 벡터에 대해 좀 더 자세히 살펴봐야 합니다. 이 장의 목표는 앞으로 다룰 주제에 대한 기본적인 수학적 배경 지식을 제공하는 것입니다. 내용이 어렵게 느껴지더라도 최대한 이해하려고 노력하고, 필요할 때 언제든 다시 이 장을 참고하여 개념을 복습하세요.</p>
 <h2 id="_2">벡터</h2>
 <p>가장 기본적인 정의로, 벡터는 방향 그 자체입니다. 벡터는 <strong class="g">방향(direction)</strong>과 <strong class="g">크기(magnitude)</strong>(또는 강도나 길이)를 가지고 있습니다. 벡터를 보물지도의 방향처럼 생각해 볼 수 있습니다. '왼쪽으로 10걸음, 북쪽으로 3걸음, 오른쪽으로 5걸음'에서 '왼쪽'은 방향이고 '10걸음'은 벡터의 크기입니다. 따라서 보물지도의 방향은 세 개의 벡터로 이루어져 있습니다. 벡터는 어떤 차원이든 가질 수 있지만, 보통 2차원에서 4차원 벡터를 사용합니다. 벡터가 2차원일 때는 평면상의 방향을 나타내고(2D 그래프를 생각해 보세요), 3차원일 때는 3차원 세계의 어떤 방향이든 나타낼 수 있습니다.</p>
-<p>아래 그림에서 각 벡터는 2차원 그래프에서 화살표(x, y)로 표현된 세 개의 벡터를 볼 수 있습니다. 벡터는 3차원보다 2차원으로 나타내는 것이 더 직관적이므로, 이 2차원 벡터들을 az 좌표가 0인 3차원 벡터로 생각할 수 있습니다. 벡터는 방향을 나타내므로 벡터의 원점은 벡터의 값을 바꾸지 않습니다. 아래 그래프에서 벡터 <span class="arithmatex">\(\color{red}{\vec{v}}\)</span> 와 <span class="arithmatex">\(\color{blue}{\vec{w}}\)</span> 는 원점이 다르더라도 크기가 같다는 것을 알 수 있습니다.</p>
+<p>아래 그림에서 각 벡터는 2차원 그래프에서 화살표(x, y)로 표현된 세 개의 벡터를 볼 수 있습니다. 벡터는 3차원보다 2차원으로 나타내는 것이 더 직관적이므로, 이 2차원 벡터들을 az 좌표가 0인 3차원 벡터로 생각할 수 있습니다. 벡터는 방향을 나타내므로 벡터의 원점은 벡터의 값을 바꾸지 않습니다. 아래 그래프에서 벡터 <span class="arithmatex">\(\textcolor{red}{\vec{v}}\)</span> 와 <span class="arithmatex">\(\textcolor{blue}{\vec{w}}\)</span> 는 원점이 다르더라도 크기가 같다는 것을 알 수 있습니다.</p>
 <p><img alt="" src="../../static/vectors.png" /></p>
 <p>벡터를 표현할 때 수학자들은 일반적으로 벡터 머리 위에 작은 막대가 있는 기호( <span class="arithmatex">\(\vec{v}\)</span> )로 나타내는 것을 선호합니다. 또한, 공식에서 벡터를 표시할 때는 일반적으로 다음과 같이 나타냅니다.</p>
 <div class="arithmatex">\[
@@ -876,16 +1032,16 @@ x
 <h3 id="_6">길이</h3>
 <p>벡터의 길이/크기를 구하려면 수학 시간에 배웠던 <strong class="g">피타고라스 정리</strong>를 사용합니다. 벡터의 x축과 y축 성분을 삼각형의 두 변으로 생각하면 벡터는 삼각형을 이룹니다.</p>
 <p><img alt="" src="../../static/vectors_triangle.png" /></p>
-<p>두 변의 길이(x, y)가 알려져 있고 기울어진 변의 길이 <span class="arithmatex">\(\color{red}{\vec{v}}\)</span>를 알고 싶으므로 피타고라스 정리를 사용하여 다음과 같이 계산할 수 있습니다.</p>
+<p>두 변의 길이(x, y)가 알려져 있고 기울어진 변의 길이 <span class="arithmatex">\(\textcolor{red}{\vec{v}}\)</span>를 알고 싶으므로 피타고라스 정리를 사용하여 다음과 같이 계산할 수 있습니다.</p>
 <div class="arithmatex">\[
-\lVert {\color{red}{\vec{v}}} \rVert
+\lVert {\textcolor{red}{\vec{v}}} \rVert
 =
 \sqrt{\textcolor{green}{x}^2 + \textcolor{blue}{y}^2}
 \]</div>
-<p>여기서 <span class="arithmatex">\(\lVert {\color{red}{\vec{v}}} \rVert\)</span>는 벡터 <span class="arithmatex">\(\color{red}{\vec{v}}\)</span>의 길이를 나타냅니다. 이는 <span class="arithmatex">\(z^2\)</span>를 추가함으로써 3D로 쉽게 확장할 수 있습니다.</p>
+<p>여기서 <span class="arithmatex">\(\lVert {\textcolor{red}{\vec{v}}} \rVert\)</span>는 벡터 <span class="arithmatex">\(\textcolor{red}{\vec{v}}\)</span>의 길이를 나타냅니다. 이는 <span class="arithmatex">\(z^2\)</span>를 추가함으로써 3D로 쉽게 확장할 수 있습니다.</p>
 <p>이 경우 벡터 (4, 2)의 길이는 다음과 같습니다.</p>
 <div class="arithmatex">\[
-\lVert {\color{red}{\vec{v}}} \rVert
+\lVert {\textcolor{red}{\vec{v}}} \rVert
 =
 \sqrt{\textcolor{green}{4}^2 + \textcolor{blue}{2}^2}
 =
@@ -904,6 +1060,167 @@ x
 <p>이를 <strong class="g">벡터 정규화(normalizing)</strong>라고 합니다. 단위 벡터는 머리 위에 작은 지붕 모양으로 표시되며, 특히 방향만 중요한 경우(벡터의 길이가 바뀌어도 방향은 변하지 않음) 다루기가 훨씬 쉽습니다.</p>
 <h3 id="-">벡터-벡터 곱셈</h3>
 <p>두 벡터의 곱셈은 다소 특이한 경우입니다. 일반적인 벡터 곱셈은 시각적인 의미가 없기 때문에 명확하게 정의되어 있지 않지만, 곱셈을 할 때 선택할 수 있는 두 가지 특정한 경우가 있습니다. 하나는 내적(<span class="arithmatex">\(\vec{v}\cdot\vec{k}\)</span>)이고 다른 하나는 외적(<span class="arithmatex">\(\vec{v}\times\vec{k}\)</span>)입니다.</p>
+<h4 id="_7">내적</h4>
+<div class="admonition note">
+<p class="admonition-title">내적</p>
+<p>원문에서는 내적이 아닌 "dot product"라는 단어를 사용하였습니다. 이는 점곱이라고도 불리지만 이 번역에서는 내적으로 통일하겠습니다.</p>
+</div>
+<p>두 벡터의 내적은 두 벡터 길이의 스칼라곱에 두 벡터 사이 각도의 코사인 값을 곱한 것과 같습니다. 만약 이 설명이 어렵게 느껴진다면 공식을 살펴보세요.</p>
+<div class="arithmatex">\[
+\vec{v}
+\cdot
+\vec{k}=
+\Vert\vec{v}\Vert
+\cdot
+\Vert\vec{k}\Vert
+\cdot
+\cos\theta
+\]</div>
+<p>두 벡터 사이의 각도는 세타(<span class="arithmatex">\(\theta\)</span>)로 나타냅니다. 이것이 왜 흥미로울까요? 만약 <span class="arithmatex">\(\vec{v}\)</span>와 <span class="arithmatex">\(\vec{k}\)</span>가 단위 벡터라면, 그 길이는 1이 됩니다. 그러면 공식은 사실상 다음과 같이 간단해집니다.</p>
+<div class="arithmatex">\[
+\hat{v}
+\cdot
+\hat{k}=
+1\cdot1
+\cdot
+\cos\theta=
+\cos\theta
+\]</div>
+<p>내적은 두 벡터 사이의 각도만을 나타냅니다. 코사인 또는 코사인 함수는 각도가 90도일 때 0이 되고, 0도일 때 1이 된다는 것을 기억하실 겁니다. 따라서 내적을 이용하면 두 벡터가 직교하는지 평행한지 쉽게 판별할 수 있습니다 (직교한다는 것은 두 벡터가 서로 직각을 이룬다는 의미입니다). 사인 또는 코사인 함수에 대해 더 자세히 알고 싶으시다면 <a href="https://www.khanacademy.org/math/geometry-home/right-triangles-topic/intro-to-the-trig-ratios-geo/v/basic-trigonometry">칸 아카데미의 삼각법 기초 강의 영상</a>을 참고하시기를 추천합니다. (한국어 자막이 있습니다!)</p>
+<div class="admonition tip">
+<p>두 개의 단위 벡터가 아닌 벡터 사이의 각도를 계산할 수도 있지만, 그럴 경우 결과에서 두 벡터의 길이를 모두 나누어야 <span class="arithmatex">\(\theta\)</span> 값만 남게 됩니다.</p>
+</div>
+<p>그렇다면 내적은 어떻게 계산할까요? 내적은 각 성분의 곱셈 결과를 더하는 것입니다. 두 개의 단위 벡터를 예로 들면 다음과 같습니다(두 벡터의 길이가 모두 정확히 1임을 확인할 수 있습니다).</p>
+<div class="arithmatex">\[
+\begin{pmatrix}
+\textcolor{red}{0.6} \\
+-\textcolor{green}{0.8} \\
+\textcolor{blue}{0}
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+\textcolor{red}{0} \\
+-\textcolor{green}{1} \\
+\textcolor{blue}{0}
+\end{pmatrix}=
+({\textcolor{red}{0.6}}*{\textcolor{red}{0}})+
+(-{\textcolor{green}{0.8}}*{\textcolor{green}{1}})+
+({\textcolor{blue}{0}}*{\textcolor{blue}{0}})=
+-0.8
+\]</div>
+<p>이 두 단위 벡터 사이의 각도를 계산하기 위해 코사인 함수의 역함수 <span class="arithmatex">\(cos^{-1}\)</span>를 사용하면 143.1도가 나옵니다. 이로써 두 벡터 사이의 각도를 계산했습니다. 내적은 나중에 조명 계산을 할 때 매우 유용하게 사용됩니다.</p>
+<h4 id="_8">외적</h4>
+<p>외적은 3차원 공간에서만 정의되며, 평행하지 않은 두 벡터를 입력으로 받아 두 입력 벡터 모두에 직교하는 세 번째 벡터를 생성합니다. 두 입력 벡터 또한 서로 직교하는 경우, 외적은 세 개의 직교 벡터를 생성하게 되는데, 이는 앞으로의 장에서 유용하게 사용될 것입니다. 다음 이미지는 3차원 공간에서 외적의 표현을 보여줍니다.</p>
+<div class="arithmatex">\[
+\begin{pmatrix}
+\textcolor{red}{A_x} \\
+\textcolor{green}{A_y} \\
+\textcolor{blue}{A_z}
+\end{pmatrix}
+\times
+\begin{pmatrix}
+\textcolor{red}{B_x} \\
+\textcolor{green}{B_y} \\
+\textcolor{blue}{B_z}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\textcolor{green}{A_y}\cdot\textcolor{blue}{B_z}
+-
+\textcolor{blue}{A_z}\cdot\textcolor{green}{B_y} \\[6pt]
+\textcolor{blue}{A_z}\cdot\textcolor{red}{B_x}
+-
+\textcolor{red}{A_x}\cdot\textcolor{blue}{B_z} \\[6pt]
+\textcolor{red}{A_x}\cdot\textcolor{green}{B_y}
+-
+\textcolor{green}{A_y}\cdot\textcolor{red}{B_x}
+\end{pmatrix}
+\]</div>
+<p>보시다시피, 그다지 논리적으로 보이지는 않습니다. 그래도 이 방법을 그대로 따라하면 입력 벡터와 직교하는 또 다른 벡터를 얻을 수 있게 됩니다.</p>
+<h2 id="_9">행렬</h2>
+<p>벡터에 대한 거의 모든 내용을 살펴보았으니 이제 행렬에 대해 알아볼 차례입니다! 행렬은 숫자, 기호 및/또는 수학적 표현식으로 이루어진 직사각형 배열입니다. 행렬의 각 항목을 <strong class="g">행렬 요소</strong>라고 합니다. 아래는 2x3 행렬의 예입니다.</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{bmatrix}
+\]</div>
+<p>행렬은 (i,j)와 같이 행과 열을 나타내는 인덱스로 사용됩니다. 따라서 위의 행렬은 2x3 행렬(3개의 열과 2개의 행, 즉 <strong class="g">행렬의 크기(dimensions)</strong>)이라고 합니다. 이는 2차원 그래프에서 (x,y)와 같이 인덱스를 사용하는 방식과는 반대입니다. 예를 들어, 값 4를 얻으려면 (2,1) (두 번째 행, 첫 번째 열)과 같이 인덱스를 사용해야 합니다.</p>
+<p>행렬은 기본적으로 수학적 표현식의 직사각형 배열일 뿐입니다. 행렬은 매우 훌륭한 수학적 속성을 가지고 있으며, 벡터와 마찬가지로 덧셈, 뺄셈, 곱셈과 같은 여러 연산을 정의할 수 있습니다.</p>
+<h3 id="_10">덧셈과 뺄셈</h3>
+<p>두 행렬 간의 덧셈과 뺄셈은 각 요소별로 수행됩니다. 따라서 일반적인 숫자 계산에 익숙한 규칙이 동일하게 적용되지만, 두 행렬 모두에서 동일한 인덱스를 가진 요소에 적용됩니다. 이는 덧셈과 뺄셈이 같은 크기의 행렬에 대해서만 가능하다는 것을 의미합니다. 3x2 행렬과 2x3 행렬(또는 3x3 행렬과 4x4 행렬)은 서로 더하거나 뺄 수 없습니다. 두 2x2 행렬의 덧셈이 어떻게 작동하는지 살펴보겠습니다.</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+\textcolor{red}1 &amp; \textcolor{red}2 \\
+\textcolor{green}3 &amp; \textcolor{green}4
+\end{bmatrix}
++
+\begin{bmatrix}
+\textcolor{red}5 &amp; \textcolor{red}6 \\
+\textcolor{green}7 &amp; \textcolor{green}8
+\end{bmatrix}
+=
+\begin{bmatrix}
+{\textcolor{red}1}+{\textcolor{red}5} &amp; {\textcolor{red}2}+{\textcolor{red}6} \\
+{\textcolor{green}3}+{\textcolor{green}7} &amp; {\textcolor{green}4}+{\textcolor{green}8}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\textcolor{red}6 &amp; \textcolor{red}8 \\
+\textcolor{green}{10} &amp; \textcolor{green}{12}
+\end{bmatrix}
+\]</div>
+<p>행렬 뺄셈에도 동일한 규칙이 적용됩니다.</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+\textcolor{red}4 &amp; \textcolor{red}2 \\
+\textcolor{green}1 &amp; \textcolor{green}6
+\end{bmatrix}
+-
+\begin{bmatrix}
+\textcolor{red}2 &amp; \textcolor{red}4 \\
+\textcolor{green}0 &amp; \textcolor{green}1
+\end{bmatrix}
+=
+\begin{bmatrix}
+{\textcolor{red}4}-{\textcolor{red}2} &amp; {\textcolor{red}2}-{\textcolor{red}4} \\
+{\textcolor{green}1}-{\textcolor{green}0} &amp; {\textcolor{green}6}-{\textcolor{green}1}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\textcolor{red}{2} &amp; -\textcolor{red}{2} \\
+\textcolor{green}{1} &amp; \textcolor{green}{5}
+\end{bmatrix}
+\]</div>
+<h3 id="-_1">행렬-스칼라 곱셈</h3>
+<p>행렬-스칼라 곱은 행렬의 각 요소에 스칼라 값을 곱하는 것입니다. 다음 예는 곱셈을 보여줍니다.</p>
+<div class="arithmatex">\[
+\textcolor{green}2 \cdot \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix} = \begin{bmatrix} \textcolor{green}2 \cdot 1 &amp; \textcolor{green}2 \cdot 2 \\ \textcolor{green}2 \cdot 3 &amp; \textcolor{green}2 \cdot 4 \end{bmatrix} = \begin{bmatrix} 2 &amp; 4 \\ 6 &amp; 8 \end{bmatrix}
+\]</div>
+<p>이제 왜 그 숫자들을 스칼라라고 부르는지 이해가 될 것입니다. 스칼라는 기본적으로 행렬의 모든 요소를 ​​자신의 값으로 확대/축소합니다. 이 예에서는 모든 요소가 2로 확대/축소되었습니다.</p>
+<p>지금까지는 괜찮았습니다. 우리가 다룬 사례들은 그다지 복잡하지 않았거든요. 하지만 행렬-행렬 곱셈을 시작하면서부터는 상황이 달라졌습니다.</p>
+<h3 id="-_2">행렬-행렬 곱셈</h3>
+<p>행렬 곱셈은 복잡한 연산이라기보다는 익숙해지기 어려운 연산입니다. 행렬 곱셈은 기본적으로 미리 정의된 규칙들을 따르는 것을 의미합니다. 다만 몇 가지 제약 조건이 있습니다.</p>
+<ol>
+<li>두 행렬을 곱하려면 왼쪽 행렬의 열 개수와 오른쪽 행렬의 행 개수가 같아야 합니다.</li>
+<li>행렬 곱셈은 교환법칙이 성립하지 않습니다. 즉, <span class="arithmatex">\(A \cdot B \neq B \cdot A\)</span>입니다.</li>
+</ol>
+<p>두 개의 2x2 행렬의 곱셈 예시부터 시작해 보겠습니다.</p>
+<div class="arithmatex">\[
+\begin{bmatrix} \textcolor{red}1 &amp; \textcolor{red}2 \\ \textcolor{green}3 &amp; \textcolor{green}4 \end{bmatrix} \cdot \begin{bmatrix} \textcolor{blue}5 &amp; \textcolor{purple}6 \\ \textcolor{blue}7 &amp; \textcolor{purple}8 \end{bmatrix} = \begin{bmatrix} \textcolor{red}1 \cdot \textcolor{blue}5 + \textcolor{red}2 \cdot \textcolor{blue}7 &amp; \textcolor{red}1 \cdot \textcolor{purple}6 + \textcolor{red}2 \cdot \textcolor{purple}8 \\ \textcolor{green}3 \cdot \textcolor{blue}5 + \textcolor{green}4 \cdot \textcolor{blue}7 &amp; \textcolor{green}3 \cdot \textcolor{purple}6 + \textcolor{green}4 \cdot \textcolor{purple}8 \end{bmatrix} = \begin{bmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{bmatrix}
+\]</div>
+<p>지금쯤이면 방금 무슨 일이 일어났는지 이해하려고 애쓰고 계실 겁니다. 행렬 곱셈은 왼쪽 행렬의 행과 오른쪽 행렬의 열을 이용하여 일반적인 곱셈과 덧셈을 결합한 것입니다. 다음 이미지를 통해 좀 더 자세히 설명해 보겠습니다.</p>
+<p><img alt="" src="../../static/matrix_multiplication.png" /></p>
+<p>먼저 왼쪽 행렬의 맨 위 행을 가져온 다음 오른쪽 행렬에서 열을 하나 선택합니다. 선택한 행과 열에 따라 결과 2x2 행렬의 어떤 출력값이 계산될지가 결정됩니다. 왼쪽 행렬의 첫 번째 행을 선택하면 결과값은 결과 행렬의 첫 번째 행에 들어가고, 열을 선택했을 때 첫 번째 열을 선택하면 결과값은 결과 행렬의 첫 번째 열에 들어갑니다. 빨간색 사각형이 바로 그런 경우입니다. 오른쪽 아래 결과를 계산하려면 첫 번째 행렬의 맨 아래 행과 두 번째 행렬의 가장 오른쪽 열을 사용합니다.</p>
+<p>최종 값을 계산하기 위해 먼저 행과 열의 첫 번째 요소를 일반 곱셈으로 곱하고, 두 번째, 세 번째, 네 번째 요소 등도 같은 방식으로 곱합니다. 그런 다음 각 곱셈 결과를 모두 더하면 최종 결과가 나옵니다. 여기서 왼쪽 행렬의 열 크기와 오른쪽 행렬의 행 크기가 같아야 한다는 조건이 있다는 것도 이해가 될 것입니다. 그렇지 않으면 연산을 완료할 수 없기 때문입니다!</p>
+<p>그 결과는 (n,m) 차원의 행렬이 되는데, 여기서 n은 좌변 행렬의 행 수이고 m은 우변 행렬의 열 수입니다.</p>
+<p>머릿속으로 곱셈을 떠올리는 데 어려움을 느끼더라도 걱정하지 마세요. 손으로 직접 계산해 보면서 어려움이 있을 때마다 이 페이지로 돌아오세요. 시간이 지나면서 행렬 곱셈은 자연스럽게 익숙해질 것입니다.</p>
+<p>좀 더 큰 예제를 통해 행렬 곱셈에 대한 논의를 마무리해 보겠습니다. 색깔을 이용하여 패턴을 시각화해 보세요. 유용한 연습으로, 직접 곱셈 결과를 계산해 보고 결과 행렬과 비교해 보세요. (행렬 곱셈을 직접 손으로 계산해 보면 금방 이해할 수 있을 겁니다.)</p>
+<div class="arithmatex">\[
+{\small
+\begin{bmatrix} \textcolor{red}4 &amp; \textcolor{red}2 &amp; \textcolor{red}0 \\ \textcolor{green}0 &amp; \textcolor{green}8 &amp; \textcolor{green}1 \\ \textcolor{blue}0 &amp; \textcolor{blue}1 &amp; \textcolor{blue}0 \end{bmatrix} \cdot \begin{bmatrix} \textcolor{red}4 &amp; \textcolor{green}2 &amp; \textcolor{blue}1 \\ \textcolor{red}2 &amp; \textcolor{green}0 &amp; \textcolor{blue}4 \\ \textcolor{red}9 &amp; \textcolor{green}4 &amp; \textcolor{blue}2 \end{bmatrix} = \begin{bmatrix} \textcolor{red}4 \cdot \textcolor{red}4 + \textcolor{red}2 \cdot \textcolor{red}2 + \textcolor{red}0 \cdot \textcolor{red}9 &amp; \textcolor{red}4 \cdot \textcolor{green}2 + \textcolor{red}2 \cdot \textcolor{green}0 + \textcolor{red}0 \cdot \textcolor{green}4 &amp; \textcolor{red}4 \cdot \textcolor{blue}1 + \textcolor{red}2 \cdot \textcolor{blue}4 + \textcolor{red}0 \cdot \textcolor{blue}2 \\ \textcolor{green}0 \cdot \textcolor{red}4 + \textcolor{green}8 \cdot \textcolor{red}2 + \textcolor{green}1 \cdot \textcolor{red}9 &amp; \textcolor{green}0 \cdot \textcolor{green}2 + \textcolor{green}8 \cdot \textcolor{green}0 + \textcolor{green}1 \cdot \textcolor{green}4 &amp; \textcolor{green}0 \cdot \textcolor{blue}1 + \textcolor{green}8 \cdot \textcolor{blue}4 + \textcolor{green}1 \cdot \textcolor{blue}2 \\ \textcolor{blue}0 \cdot \textcolor{red}4 + \textcolor{blue}1 \cdot \textcolor{red}2 + \textcolor{blue}0 \cdot \textcolor{red}9 &amp; \textcolor{blue}0 \cdot \textcolor{green}2 + \textcolor{blue}1 \cdot \textcolor{green}0 + \textcolor{blue}0 \cdot \textcolor{green}4 &amp; \textcolor{blue}0 \cdot \textcolor{blue}1 + \textcolor{blue}1 \cdot \textcolor{blue}4 + \textcolor{blue}0 \cdot \textcolor{blue}2 \end{bmatrix} \\ = \begin{bmatrix} 20 &amp; 8 &amp; 12 \\ 25 &amp; 4 &amp; 34 \\ 2 &amp; 0 &amp; 4 \end{bmatrix}
+}
+\]</div>
 
 
 
@@ -958,7 +1275,9 @@ x
     
       <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
-        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../js/mathjax.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
     
   </body>
