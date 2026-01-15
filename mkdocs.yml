@@ -20,8 +20,6 @@ extra_javascript:
   - js/mathjax.js
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
-
-
 extra_css:
   - css/style.css
 
