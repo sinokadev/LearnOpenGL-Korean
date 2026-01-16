@@ -754,16 +754,16 @@
 <p>이를 통해 특정 키 입력을 쉽게 확인하고 매 <strong class="g">프레임</strong>마다 그에 따라 반응할 수 있습니다. 렌더링 루프의 한 반복을 일반적으로 프레임이라고 합니다.</p>
 <h2 id="_6">렌더링</h2>
 <p>렌더링 명령은 모두 렌더링 루프 안에 넣어야 합니다. 루프의 각 반복 또는 프레임마다 모든 렌더링 명령을 실행해야 하기 때문입니다. 코드는 대략 다음과 같습니다.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// render loop</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 렌더링 루프</span>
 <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">glfwWindowShouldClose</span><span class="p">(</span><span class="n">window</span><span class="p">))</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="c1">// input</span>
+<span class="w">    </span><span class="c1">// 입력 처리</span>
 <span class="w">    </span><span class="n">processInput</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// rendering commands here</span>
+<span class="w">    </span><span class="c1">// 렌더링 명령어들</span>
 <span class="w">    </span><span class="p">...</span>
 
-<span class="w">    </span><span class="c1">// check and call events and swap the buffers</span>
+<span class="w">    </span><span class="c1">// 이벤트를 확인하고 호출한 다음 버퍼를 교체합니다.</span>
 <span class="w">    </span><span class="n">glfwPollEvents</span><span class="p">();</span>
 <span class="w">    </span><span class="n">glfwSwapBuffers</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
 <span class="p">}</span>

@@ -869,21 +869,21 @@
 <p>따라서 한 셰이더에서 다른 셰이더로 데이터를 보내려면 보내는 셰이더에 출력 변수를 선언하고 받는 셰이더에도 동일한 입력 변수를 선언해야 합니다. 양쪽에서 변수의 타입과 이름이 같으면 OpenGL은 해당 변수들을 연결하고, 그 후 셰이더 간에 데이터를 주고받을 수 있게 됩니다(프로그램 객체를 연결할 때 이 과정이 수행됩니다). 실제로 어떻게 작동하는지 보여주기 위해 이전 장에서 다룬 셰이더들을 수정하여 정점 셰이더가 프래그먼트 셰이더의 색상을 결정하도록 하겠습니다.</p>
 <p><strong>정점 셰이더</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">#version 330 core</span>
-<span class="k">layout</span><span class="w"> </span><span class="p">(</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">aPos</span><span class="p">;</span><span class="w"> </span><span class="c1">// the position variable has attribute position 0</span>
+<span class="k">layout</span><span class="w"> </span><span class="p">(</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">aPos</span><span class="p">;</span><span class="w"> </span><span class="c1">// 위치 변수는 위치 0이라는 속성을 가지고 있습니다.</span>
 
-<span class="k">out</span><span class="w"> </span><span class="kt">vec4</span><span class="w"> </span><span class="n">vertexColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// specify a color output to the fragment shader</span>
+<span class="k">out</span><span class="w"> </span><span class="kt">vec4</span><span class="w"> </span><span class="n">vertexColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// 프래그먼트 셰이더에 전달할 색상</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="nb">gl_Position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">aPos</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// see how we directly give a vec3 to vec4&#39;s constructor</span>
-<span class="w">    </span><span class="n">vertexColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// set the output variable to a dark-red color</span>
+<span class="w">    </span><span class="nb">gl_Position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">aPos</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// vec3 값을 이러한 방법으로 vec4 값으로 변환할 수 있습니다.</span>
+<span class="w">    </span><span class="n">vertexColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 출력 변수를 짙은 빨간색으로 설정합니다.</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>프래그먼트 셰이더</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">#version 330 core</span>
 <span class="k">out</span><span class="w"> </span><span class="kt">vec4</span><span class="w"> </span><span class="n">FragColor</span><span class="p">;</span>
 
-<span class="k">in</span><span class="w"> </span><span class="kt">vec4</span><span class="w"> </span><span class="n">vertexColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// the input variable from the vertex shader (same name and same type)  </span>
+<span class="k">in</span><span class="w"> </span><span class="kt">vec4</span><span class="w"> </span><span class="n">vertexColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// 정점 셰이더에서 전달되는 입력 변수 (이름과 타입이 동일해야 함) </span>
 
 <span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
@@ -933,28 +933,28 @@
 <p>이제 유니폼 변수의 값을 설정하는 방법을 알았으니, 이를 렌더링에 사용할 수 있습니다. 색상이 점진적으로 변하도록 하려면 매 프레임마다 이 유니폼 변수를 업데이트해야 합니다. 그렇지 않으면 한 번만 설정하면 삼각형이 단색으로 유지됩니다. 따라서 <code>greenValue</code>를 계산하고 매 렌더링 반복마다 유니폼 변수를 업데이트합니다.</p>
 <div class="highlight"><pre><span></span><code><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">glfwWindowShouldClose</span><span class="p">(</span><span class="n">window</span><span class="p">))</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="c1">// input</span>
+<span class="w">    </span><span class="c1">// 입력 처리</span>
 <span class="w">    </span><span class="n">processInput</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// render</span>
-<span class="w">    </span><span class="c1">// clear the colorbuffer</span>
+<span class="w">    </span><span class="c1">// 렌더링</span>
+<span class="w">    </span><span class="c1">// 색상 버퍼를 초기화</span>
 <span class="w">    </span><span class="n">glClearColor</span><span class="p">(</span><span class="mf">0.2f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">);</span>
 <span class="w">    </span><span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// be sure to activate the shader</span>
+<span class="w">    </span><span class="c1">// 셰이더 프로그램을 활성화하는 것을 잊지 마세요.</span>
 <span class="w">    </span><span class="n">glUseProgram</span><span class="p">(</span><span class="n">shaderProgram</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// update the uniform color</span>
+<span class="w">    </span><span class="c1">// 유니폼 색상 값을 업데이트</span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">timeValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glfwGetTime</span><span class="p">();</span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">greenValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">timeValue</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0f</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">vertexColorLocation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shaderProgram</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ourColor&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="n">glUniform4f</span><span class="p">(</span><span class="n">vertexColorLocation</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="n">greenValue</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// now render the triangle</span>
+<span class="w">    </span><span class="c1">// 이제 삼각형을 렌더링합니다.</span>
 <span class="w">    </span><span class="n">glBindVertexArray</span><span class="p">(</span><span class="n">VAO</span><span class="p">);</span>
 <span class="w">    </span><span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// swap buffers and poll IO events</span>
+<span class="w">    </span><span class="c1">// 버퍼를 교체하고 IO 이벤트를 처리</span>
 <span class="w">    </span><span class="n">glfwSwapBuffers</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
 <span class="w">    </span><span class="n">glfwPollEvents</span><span class="p">();</span>
 <span class="p">}</span>
@@ -980,15 +980,15 @@
 </code></pre></div>
 <p>이제 정점 셰이더로 보낼 데이터가 더 많아졌으므로, 정점 셰이더가 색상 값을 정점 속성 입력으로 받도록 조정해야 합니다. 레이아웃 지정자를 사용하여 <code>aColor</code> 속성의 위치를 ​​1로 설정했음에 유의하세요.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#version 330 core</span>
-<span class="k">layout</span><span class="w"> </span><span class="p">(</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">aPos</span><span class="p">;</span><span class="w">   </span><span class="c1">// the position variable has attribute position 0</span>
-<span class="k">layout</span><span class="w"> </span><span class="p">(</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">aColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// the color variable has attribute position 1</span>
+<span class="k">layout</span><span class="w"> </span><span class="p">(</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">aPos</span><span class="p">;</span><span class="w">   </span><span class="c1">// 위치 변수는 위치 0이라는 속성을 가지고 있습니다.</span>
+<span class="k">layout</span><span class="w"> </span><span class="p">(</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">aColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// 색상 변수는 위치 1이라는 속성을 가지고 있습니다.</span>
 
-<span class="k">out</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">ourColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// output a color to the fragment shader</span>
+<span class="k">out</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">ourColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// 프래그먼트 셰이더로 보낼 색</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="nb">gl_Position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">aPos</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
-<span class="w">    </span><span class="n">ourColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// set ourColor to the input color we got from the vertex data</span>
+<span class="w">    </span><span class="n">ourColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aColor</span><span class="p">;</span><span class="w"> </span><span class="c1">// ourColor 변수를 정점 데이터에서 가져온 입력 색상으로 설정합니다.</span>
 <span class="p">}</span><span class="w">  </span>
 </code></pre></div>
 <p>이제 프래그먼트의 색상에 유니폼 변수를 사용하지 않고 <code>ourColor</code> 출력 변수를 사용하므로 프래그먼트 셰이더도 변경해야 합니다.</p>
