@@ -679,6 +679,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#-_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        행렬-벡터 곱셈
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="행렬-벡터 곱셈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단위 행렬
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        스케일링
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        변환
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -860,6 +910,56 @@
     <span class="md-ellipsis">
       
         행렬-행렬 곱셈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        행렬-벡터 곱셈
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="행렬-벡터 곱셈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단위 행렬
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        스케일링
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        변환
       
     </span>
   </a>
@@ -1221,6 +1321,38 @@ x
 \begin{bmatrix} \textcolor{red}4 &amp; \textcolor{red}2 &amp; \textcolor{red}0 \\ \textcolor{green}0 &amp; \textcolor{green}8 &amp; \textcolor{green}1 \\ \textcolor{blue}0 &amp; \textcolor{blue}1 &amp; \textcolor{blue}0 \end{bmatrix} \cdot \begin{bmatrix} \textcolor{red}4 &amp; \textcolor{green}2 &amp; \textcolor{blue}1 \\ \textcolor{red}2 &amp; \textcolor{green}0 &amp; \textcolor{blue}4 \\ \textcolor{red}9 &amp; \textcolor{green}4 &amp; \textcolor{blue}2 \end{bmatrix} = \begin{bmatrix} \textcolor{red}4 \cdot \textcolor{red}4 + \textcolor{red}2 \cdot \textcolor{red}2 + \textcolor{red}0 \cdot \textcolor{red}9 &amp; \textcolor{red}4 \cdot \textcolor{green}2 + \textcolor{red}2 \cdot \textcolor{green}0 + \textcolor{red}0 \cdot \textcolor{green}4 &amp; \textcolor{red}4 \cdot \textcolor{blue}1 + \textcolor{red}2 \cdot \textcolor{blue}4 + \textcolor{red}0 \cdot \textcolor{blue}2 \\ \textcolor{green}0 \cdot \textcolor{red}4 + \textcolor{green}8 \cdot \textcolor{red}2 + \textcolor{green}1 \cdot \textcolor{red}9 &amp; \textcolor{green}0 \cdot \textcolor{green}2 + \textcolor{green}8 \cdot \textcolor{green}0 + \textcolor{green}1 \cdot \textcolor{green}4 &amp; \textcolor{green}0 \cdot \textcolor{blue}1 + \textcolor{green}8 \cdot \textcolor{blue}4 + \textcolor{green}1 \cdot \textcolor{blue}2 \\ \textcolor{blue}0 \cdot \textcolor{red}4 + \textcolor{blue}1 \cdot \textcolor{red}2 + \textcolor{blue}0 \cdot \textcolor{red}9 &amp; \textcolor{blue}0 \cdot \textcolor{green}2 + \textcolor{blue}1 \cdot \textcolor{green}0 + \textcolor{blue}0 \cdot \textcolor{green}4 &amp; \textcolor{blue}0 \cdot \textcolor{blue}1 + \textcolor{blue}1 \cdot \textcolor{blue}4 + \textcolor{blue}0 \cdot \textcolor{blue}2 \end{bmatrix} \\ = \begin{bmatrix} 20 &amp; 8 &amp; 12 \\ 25 &amp; 4 &amp; 34 \\ 2 &amp; 0 &amp; 4 \end{bmatrix}
 }
 \]</div>
+<p>보시다시피, 행렬 곱셈은 상당히 번거롭고 오류 발생 가능성이 매우 높습니다(그래서 보통 컴퓨터가 이 작업을 수행합니다). 특히 행렬의 크기가 커질수록 문제는 더욱 심각해집니다. 행렬의 수학적 속성에 대해 더 자세히 알고 싶으시다면 <a href="https://www.khanacademy.org/math/algebra-home/alg-matrices">칸 아카데미의 행렬 관련 영상</a>을 시청해 보시기를 강력히 추천합니다.</p>
+<p>어쨌든, 이제 행렬 곱셈 방법을 알았으니 본격적인 내용을 살펴볼 수 있겠네요.</p>
+<h2 id="-_3">행렬-벡터 곱셈</h2>
+<p>지금까지 우리는 벡터를 꽤 많이 접해왔습니다. 벡터는 위치, 색상, 심지어 텍스처 좌표를 나타내는 데 사용되었죠. 이제 좀 더 깊이 들어가서, 벡터는 기본적으로 Nx1 행렬이며 여기서 N은 벡터의 구성 요소 개수(또는 <strong class="g">N차원</strong> 벡터)라는 점을 알려드리겠습니다. 생각해 보면 아주 간단합니다. 벡터는 행렬과 마찬가지로 숫자의 배열이지만 열이 하나뿐이라는 점만 다릅니다. 그렇다면 이 새로운 정보는 어떻게 도움이 될까요? MxN 행렬이 있을 때, 행렬의 열 개수가 벡터의 행 개수와 같으므로 행렬 곱셈이 가능합니다.</p>
+<div class="admonition note">
+<p>MxN 행렬은 M개의 행과 N개의 열이 있습니다.</p>
+</div>
+<p>그렇다면 행렬과 벡터를 곱하는 것이 왜 중요할까요? 바로 행렬 안에 다양한 2차원/3차원 변환을 넣을 수 있고, 행렬과 벡터를 곱하면 그 벡터도 변환되기 때문입니다. 아직 잘 이해가 안 되신다면 몇 가지 예시를 통해 알아보겠습니다.</p>
+<h3 id="_11">단위 행렬</h3>
+<p>OpenGL에서는 여러 가지 이유로 보통 4x4 변환 행렬을 사용하는데, 그중 하나는 대부분의 벡터 크기가 4이기 때문입니다. 가장 간단한 변환 행렬은 <strong class="g">단위 행렬</strong>입니다. 단위 행렬은 대각선을 제외한 모든 요소가 0인 NxN 행렬입니다. 보시다시피, 이 변환 행렬은 사용해도 벡터는 전혀 변하지 않습니다.</p>
+<div class="arithmatex">\[\begin{bmatrix} \textcolor{red}1 &amp; \textcolor{red}0 &amp; \textcolor{red}0 &amp; \textcolor{red}0 \\ \textcolor{green}0 &amp; \textcolor{green}1 &amp; \textcolor{green}0 &amp; \textcolor{green}0 \\ \textcolor{blue}0 &amp; \textcolor{blue}0 &amp; \textcolor{blue}1 &amp; \textcolor{blue}0 \\ \textcolor{purple}0 &amp; \textcolor{purple}0 &amp; \textcolor{purple}0 &amp; \textcolor{purple}1 \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} = \begin{bmatrix} \textcolor{red}1 \cdot 1 \\ \textcolor{green}1 \cdot 2 \\ \textcolor{blue}1 \cdot 3 \\ \textcolor{purple}1 \cdot 4 \end{bmatrix} = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix}\]</div>
+<p>벡터는 전혀 변경되지 않았습니다. 이는 곱셈 규칙을 통해 명확해집니다. 첫 번째 결과 요소는 행렬의 첫 번째 행의 각 요소와 벡터의 각 요소를 각각 곱한 값입니다. 첫 번째 요소를 제외한 모든 요소가 0이므로 <span class="arithmatex">\(\textcolor{red}1\cdot1 + \textcolor{red}0\cdot2 + \textcolor{red}0\cdot3 + \textcolor{red}0\cdot4 = 1\)</span>이 되고, 벡터의 나머지 세 요소에도 동일하게 적용됩니다.</p>
+<div class="admonition tip">
+<p>변환을 수행하지 않는 변환 행렬이 무슨 용도로 쓰이는지 궁금하실 수도 있습니다. 단위 행렬은 일반적으로 다른 변환 행렬을 생성하는 출발점이 되며, 선형 대수학을 더 깊이 파고들면 정리 증명 및 선형 방정식 풀이에 매우 유용한 행렬입니다.</p>
+</div>
+<h3 id="_12">스케일링</h3>
+<p>벡터를 확대/축소(스케일링)한다는 것은 화살표의 방향을 그대로 유지하면서 확대하려는 양만큼 화살표의 길이를 늘리는 것을 의미합니다. 2차원 또는 3차원 공간에서 작업할 때, 각 축(x, y 또는 z)을 각각 확대/축소하는 2개 또는 3개의 변수로 이루어진 벡터를 사용하여 확대/축소를 정의할 수 있습니다.</p>
+<p>벡터 <span class="arithmatex">\(\textcolor{red}{\vec{v}} = (3,2)\)</span>를 확대해 보겠습니다. x축 방향으로 0.5배 확대하여 폭을 절반으로 줄이고, y축 방향으로 2배 확대하여 높이를 두 배로 줄입니다. 벡터를 (0.5,2)배 확대했을 때 <span class="arithmatex">\(\textcolor{blue}{\vec{s}}\)</span>가 어떻게 변하는지 살펴보겠습니다.</p>
+<p><img alt="" src="../../static/vectors_scale.png" /></p>
+<p>OpenGL은 일반적으로 3D 공간에서 작동하므로 이 2D 경우에는 z축 스케일을 1로 설정해도 아무런 문제가 없다는 점을 기억하세요. 방금 수행한 스케일링 작업은 각 축의 스케일링 계수가 다르기 때문에 <strong class="g">비균일(non-uniform)</strong> 스케일링입니다. 모든 축의 스케일링 계수가 동일하면 <strong class="g">균일 스케일링(uniform scale)</strong>이라고 합니다.</p>
+<p>이제 스케일링을 수행하는 변환 행렬을 만들어 보겠습니다. 단위 행렬에서 대각선 요소는 각각 해당 벡터 요소와 곱해진다는 것을 알았습니다. 만약 단위 행렬의 1을 3으로 바꾸면 어떻게 될까요? 그러면 각 벡터 요소에 3을 곱하게 되어 벡터 전체가 3배로 균일하게 스케일링됩니다. 스케일링 변수를 <span class="arithmatex">\((\textcolor{red}{S_1}, \textcolor{green}{S_2}, \textcolor{blue}{S_3})\)</span>으로 나타내면 임의의 벡터 <span class="arithmatex">\((x,y,z)\)</span>에 대한 스케일링 행렬을 다음과 같이 정의할 수 있습니다.</p>
+<div class="arithmatex">\[
+\begin{bmatrix} \textcolor{red}{S_1} &amp; \textcolor{red}0 &amp; \textcolor{red}0 &amp; \textcolor{red}0 \\ \textcolor{green}0 &amp; \textcolor{green}{S_2} &amp; \textcolor{green}0 &amp; \textcolor{green}0 \\ \textcolor{blue}0 &amp; \textcolor{blue}0 &amp; \textcolor{blue}{S_3} &amp; \textcolor{blue}0 \\ \textcolor{purple}0 &amp; \textcolor{purple}0 &amp; \textcolor{purple}0 &amp; \textcolor{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} \textcolor{red}{S_1} \cdot x \\ \textcolor{green}{S_2} \cdot y \\ \textcolor{blue}{S_3} \cdot z \\ 1 \end{pmatrix}
+\]</div>
+<p>네 번째 스케일링 값은 1로 유지된다는 점에 유의하십시오. w 구성 요소는 나중에 살펴보겠지만 다른 용도로 사용됩니다.</p>
+<h3 id="_13">변환</h3>
+<p><strong class="g">변환(Translation)</strong>이란 원래 벡터 위에 다른 벡터를 더하여 위치가 다른 새로운 벡터를 생성하는 과정입니다. 즉, 변환 벡터만큼 벡터를 이동시키는 것입니다. 벡터 덧셈은 이미 다뤘으므로 크게 새로운 내용은 아닐 것입니다.</p>
+<p>스케일링 행렬과 마찬가지로 4x4 행렬에는 특정 연산을 수행하는 데 사용할 수 있는 여러 위치가 있으며, 변환의 경우 4번째 열의 상위 3개 값이 이에 해당합니다. 변환 벡터를 <span class="arithmatex">\((\textcolor{red}{T_x},\textcolor{green}{T_y},\textcolor{blue}{T_z})\)</span>로 나타내면 변환 행렬은 다음과 같이 정의할 수 있습니다.</p>
+<div class="arithmatex">\[
+\begin{bmatrix}  \textcolor{red}1 &amp; \textcolor{red}0 &amp; \textcolor{red}0 &amp; \textcolor{red}{T_x} \\ \textcolor{green}0 &amp; \textcolor{green}1 &amp; \textcolor{green}0 &amp; \textcolor{green}{T_y} \\ \textcolor{blue}0 &amp; \textcolor{blue}0 &amp; \textcolor{blue}1 &amp; \textcolor{blue}{T_z} \\ \textcolor{purple}0 &amp; \textcolor{purple}0 &amp; \textcolor{purple}0 &amp; \textcolor{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} x + \textcolor{red}{T_x} \\ y + \textcolor{green}{T_y} \\ z + \textcolor{blue}{T_z} \\ 1 \end{pmatrix}
+\]</div>
+<p>이 방법이 가능한 이유는 모든 변환 값이 벡터의 w 열 값과 곱해지고 벡터의 원래 값에 더해지기 때문입니다(행렬 곱셈 규칙을 기억하세요). 3x3 행렬로는 이것이 불가능했을 것입니다.</p>
 
 
 
