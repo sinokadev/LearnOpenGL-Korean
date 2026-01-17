@@ -11,23 +11,23 @@
       
       
       
+        <link rel="prev" href="../%EB%B3%80%ED%98%95/">
       
-        <link rel="next" href="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/OpenGL/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>LearnOpenGL Korean</title>
+        <title>좌표 공간 - LearnOpenGL Korean</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
       
 
@@ -48,9 +48,9 @@
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="../../css/style.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#learnopengl" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -84,7 +84,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="LearnOpenGL Korean" class="md-header__button md-logo" aria-label="LearnOpenGL Korean" data-md-component="logo">
+    <a href="../.." title="LearnOpenGL Korean" class="md-header__button md-logo" aria-label="LearnOpenGL Korean" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              소개
+              좌표 공간
             
           </span>
         </div>
@@ -182,7 +182,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="LearnOpenGL Korean" class="md-nav__button md-logo" aria-label="LearnOpenGL Korean" data-md-component="logo">
+    <a href="../.." title="LearnOpenGL Korean" class="md-nav__button md-logo" aria-label="LearnOpenGL Korean" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -197,19 +197,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -225,7 +216,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -234,18 +224,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -266,7 +258,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -284,7 +276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/OpenGL/" class="md-nav__link">
+      <a href="../OpenGL/" class="md-nav__link">
         
   
   
@@ -312,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/%EC%B5%9C%EC%B4%88%EC%9D%98%20%EC%B0%BD/" class="md-nav__link">
+      <a href="../%EC%B5%9C%EC%B4%88%EC%9D%98%20%EC%B0%BD/" class="md-nav__link">
         
   
   
@@ -340,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/%EC%B5%9C%EC%B4%88%EC%9D%98%20%EC%B0%BD-%EB%A6%AC%EB%88%85%EC%8A%A4/" class="md-nav__link">
+      <a href="../%EC%B5%9C%EC%B4%88%EC%9D%98%20%EC%B0%BD-%EB%A6%AC%EB%88%85%EC%8A%A4/" class="md-nav__link">
         
   
   
@@ -368,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/%EC%95%88%EB%85%95%20%EC%B0%BD/" class="md-nav__link">
+      <a href="../%EC%95%88%EB%85%95%20%EC%B0%BD/" class="md-nav__link">
         
   
   
@@ -396,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/%EC%95%88%EB%85%95%20%EC%82%BC%EA%B0%81%ED%98%95/" class="md-nav__link">
+      <a href="../%EC%95%88%EB%85%95%20%EC%82%BC%EA%B0%81%ED%98%95/" class="md-nav__link">
         
   
   
@@ -424,7 +416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/%EC%85%B0%EC%9D%B4%EB%8D%94/" class="md-nav__link">
+      <a href="../%EC%85%B0%EC%9D%B4%EB%8D%94/" class="md-nav__link">
         
   
   
@@ -452,7 +444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/%ED%85%8D%EC%8A%A4%EC%B3%90/" class="md-nav__link">
+      <a href="../%ED%85%8D%EC%8A%A4%EC%B3%90/" class="md-nav__link">
         
   
   
@@ -480,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/%EB%B3%80%ED%98%95/" class="md-nav__link">
+      <a href="../%EB%B3%80%ED%98%95/" class="md-nav__link">
         
   
   
@@ -505,10 +497,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/%EC%A2%8C%ED%91%9C%20%EA%B3%B5%EA%B0%84/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    좌표 공간
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -524,6 +543,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        큰 흐름
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -556,6 +606,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        큰 흐름
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -571,50 +640,29 @@
 
 
 
-<h1 id="learnopengl">LearnOpenGL</h1>
-<p>이것은 <a href="https://learnopengl.com">LearnOpenGL</a>의 한국어 번역입니다.</p>
-<p>번역기를 사용했으며, 오역이 있을 수 있습니다.</p>
-<h1 id="_1">소개</h1>
-<p>이곳에 오셨다면 아마 컴퓨터 그래픽의 내부 구조를 배우고, 유명 프로그래머들이 하는 모든 일을 직접 해보고 싶으실 겁니다. 직접 해보고 배우는건 정말 재미있고 유익하며, 컴퓨터 그래픽스에 대한 깊은 지식을 알 수 있습니다. 이 하지만 이 모든 것을 시작하기 전에 몇 가지 고려해야 할 사항이 있습니다.</p>
-<h2 id="_2">필수 조건</h2>
-<p>OpenGL은 자체 플랫폼이 아닌 그래픽 API이므로 작동할 언어가 필요하며 우리는 C++를 사용할 것입니다. 따라서 C++에 대한 어느 정도의 지식이 필요합니다. 그래도 고급 C++ 개념은 같이 설명 할 예정이니 C++에 대해서 전문가일 필요는 없습니다. 단지 'Hello World'프로그램 이상을 작성할 수 있으면 됩니다. C++에 대한 경험이 많지 않은 경우 <a href="https://www.learncpp.com/">www.learncpp.com</a>를 추천드립니다.</p>
-<p>또한, 이 과정에서 선형대수, 기하학, 삼각법과 같은 수학을 사용할 예정이며, 필요한 모든 수학 개념을 설명하려고 노력할 것입니다. 하지만 저는 수학에 정통하지 않기 때문에 제 설명이 이해하기 쉬울지라도 대부분 불완전할 것입니다. 따라서 필요한 경우, 자료를 더 완벽하게 설명하는 좋은 자료들을 참고하실 수 있도록 안내해 드리겠습니다. OpenGL을 시작하기 전에 필요한 수학적 지식에 대해 걱정하지 마세요. 기본적인 수학적 배경 지식만 있으면 거의 모든 개념을 이해할 수 있으며, 가능한 한 수학적인 내용은 최소화하려고 노력할 것입니다. 대부분의 기능은 사용법만 알면 모든 수학적 지식을 이해할 필요가 없습니다. </p>
-<h2 id="_3">구조</h2>
-<p>LearnOpenGL은 여러 개의 일반 섹션으로 나뉩니다. 각 섹션은 여러 장으로 구성되어 있으며, 각 장은 다양한 개념을 자세히 설명합니다. 각 장은 왼쪽 메뉴에서 찾을 수 있습니다. 개념은 선형적으로 학습되므로 별도의 지시가 없는 한 처음부터 끝까지 순차적으로 학습하는 것이 좋습니다. 각 장에서는 배경 이론과 실제 코드를 설명합니다.</p>
-<h3 id="_4">상자</h3>
-<div class="admonition tip">
-<p><strong>초록색</strong> 상자에는 OpenGL이나 해당 주제에 대한 몇 가지 참고 사항이나 유용한 기능 또는 힌트가 들어 있습니다.</p>
-</div>
-<div class="admonition warning">
-<p><strong>빨간색</strong> 상자에는 특별히 주의해야 할 경고나 다른 기능이 들어 있습니다.</p>
-</div>
-<div class="admonition note">
-<p><strong>파란색</strong> 상자에는 번역가의 한마디가 들어 있습니다.</p>
-</div>
-<h3 id="_5">코드</h3>
-<p>사이트에는 아래와 같은 코드 조각들이 있습니다.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 이게 코드 조각입니다.</span>
-</code></pre></div>
-<h3 id="_6">색상 힌트</h3>
-<p>일부 단어는 특별한 의미를 담고 있다는 것을 더욱 명확하게 나타내기 위해 다른 생상으로 표시됩니다.</p>
+<h1 id="_1">좌표 공간</h1>
+<p>지난 장에서는 변환 행렬**{:.g}을 사용하여 모든 정점을 변환하는 방법을 배웠습니다. OpenGL은 각 정점 셰이더 실행 후 화면에 표시될 모든 정점이 정규화된 장치 좌표(NDC)로 변환되어 있어야 한다고 요구합니다. 즉, 각 정점의 x, y, z 좌표는 -1.0에서 1.0 사이여야 하며, 이 범위를 벗어나는 좌표는 화면에 표시되지 않습니다. 일반적으로 우리는 좌표 범위를 직접 지정하고 정점 셰이더에서 이러한 좌표를 정규화된 장치 좌표(NDC)로 변환합니다. 이렇게 변환된 NDC 좌표는 래스터라이저에 전달되어 화면의 2D 좌표/픽셀로 변환됩니다.</p>
+<p>좌표를 NDC로 변환하는 작업은 일반적으로 객체의 정점을 여러 좌표계로 변환한 후 최종적으로 NDC로 변환하는 단계별 방식으로 수행됩니다. 여러 중간 좌표계로 변환하는 장점은 특정 좌표계에서 일부 연산/계산이 더 쉽다는 점이며, 이는 곧 명확해질 것입니다. 우리가 다룰 중요한 좌표계는 총 5가지입니다.</p>
 <ul>
-<li><strong class="g">정의</strong> : 초록색 단어는 정의를 나타냅니다. 즉, 앞으로 자주 듣게 될 만한 중요한 개념 또는 이름입니다. </li>
-<li><strong class="r">프로그램 구조</strong> : 빨간색 단어는 함수 이름이나 클래스 이름을 말합니다.</li>
-<li><strong class="b">변수</strong> : 파란색 단어는 모든 OpenGL 상수를 포함한 변수를 말합니다. </li>
+<li>로컬 공간(또는 객체 공간)</li>
+<li>세계 공간</li>
+<li>화면 공간 (또는 시선 공간)</li>
+<li>클립 공간</li>
+<li>화면 공간</li>
 </ul>
-<h3 id="_7">기타</h3>
-<p>번역에는 재미를 위한 (재미 없는) 개그가 조금씩 포함되어있습니다. 원본에 있는 개그일수도 있고, 아니면 번역자가 독단적으로 추가한 번역일수도 있고요.</p>
-<blockquote>
-<p>가끔은 문단 밑이 이런식으로 개그가 써있기도 해요.</p>
-</blockquote>
-<h2 id="_8">라이선스</h2>
-<p>모든 내용은 CC BY 4.0 라이선스로 배포됩니다.(<a href="https://creativecommons.org/licenses/by-nc/4.0/legalcode">https://creativecommons.org/licenses/by-nc/4.0/legalcode</a>)</p>
-<p>원작자: <a href="https://joeydevries.com">Joey de Vries</a><br />
-원작자의 트위터(현 X): @JoeyDeVriez</p>
-<h2 id="_9">번역자</h2>
-<p>저의 사이트도 확인해 보세요.<br />
-<a href="https://sinoka.dev">https://sinoka.dev</a></p>
-<p>깃허브: <a href="https://github.com/sinokadev/sinokadev.github.io">https://github.com/sinokadev/sinokadev.github.io</a>  </p>
+<p>이것들은 모두 정점들이 최종적으로 조각으로 변하기 전에 거치게 될 서로 다른 상태들입니다.</p>
+<p>아마 지금쯤 공간이나 좌표계가 실제로 무엇인지 꽤 혼란스러우실 테니, 먼저 전체적인 개념과 각 공간이 나타내는 바를 보여드리면서 좀 더 개략적으로 설명해 드리겠습니다.</p>
+<h2 id="_2">큰 흐름</h2>
+<p>한 좌표 공간에서 다른 좌표 공간으로 좌표를 변환하기 위해 여러 변환 행렬을 사용하는데, 그중 가장 중요한 것은 <strong class="g">모델 행렬</strong>, <strong class="g">뷰 행렬</strong>, 그리고 <strong class="g">투영 행렬</strong>입니다. 정점 좌표는 먼저 <strong class="g">로컬 좌표</strong>로 시작하여 <strong class="g">월드 좌표</strong>, <strong class="g">뷰 좌표</strong>, <strong class="g">클립 좌표</strong>를 거쳐 최종적으로 <strong class="g">화면 좌표</strong>가 됩니다. 다음 이미지는 이러한 변환 과정과 각 변환이 수행하는 작업을 보여줍니다.</p>
+<p><img alt="" src="../../static/coordinate_systems.png" /></p>
+<ol>
+<li>로컬 좌표는 객체가 위치한 로컬 원점을 기준으로 한 객체의 좌표입니다. 즉, 객체가 처음 정의되는 기준 좌표입니다.</li>
+<li>다음 단계는 로컬 좌표를 더 큰 세계를 기준으로 하는 월드 좌표로 변환하는 것입니다. 이 좌표는 세계의 어떤 전역 원점을 기준으로 하며, 세계의 원점을 기준으로 배치된 다른 많은 객체들과 함께 상대적인 좌표입니다.</li>
+<li>다음으로, 월드 좌표를 뷰 좌표로 변환하여 각 좌표가 카메라 또는 시청자의 시점에서 보이는 좌표가 되도록 합니다.</li>
+<li>좌표를 뷰포트에 표현하려면 클립 좌표로 투영해야 합니다. 클립 좌표는 -1.0에서 1.0 범위로 처리되어 화면에 표시될 정점을 결정합니다. 원근 투영을 사용하는 경우 클립 공간 좌표로의 투영은 원근감을 추가할 수 있습니다.</li>
+<li>마지막으로, 클립 좌표를 화면 좌표(뷰포트 좌표)로 변환하는 과정을 거치는데, 이 과정을 <strong class="g">뷰포트 변환</strong>이라고 합니다. 이 변환은 -1.0에서 1.0 사이의 좌표를 <code>glViewport</code> 함수로 정의된 좌표 범위로 변환합니다. 이렇게 얻은 좌표는 래스터라이저로 전달되어 프래그먼트로 변환됩니다.</li>
+</ol>
+<p>각 공간이 어떤 용도로 쓰이는지 대략적으로 이해하셨을 겁니다. 정점을 이렇게 다양한 공간으로 변환하는 이유는 일부 연산이 특정 좌표계에서 더 효율적이거나 사용하기 편리하기 때문입니다. 예를 들어, 객체를 수정할 때는 로컬 좌표 공간에서 작업하는 것이 가장 적절하고, 다른 객체의 위치를 ​​고려하여 객체에 대한 특정 연산을 계산할 때는 월드 좌표계가 가장 적합합니다. 물론 로컬 공간에서 클립 공간으로 한 번에 변환하는 변환 행렬을 정의할 수도 있지만, 그렇게 하면 유연성이 떨어집니다.</p>
 
 
 
@@ -664,12 +712,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
-        <script src="javascripts/katex.js"></script>
+        <script src="../../javascripts/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
