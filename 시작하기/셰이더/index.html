@@ -832,6 +832,7 @@
 
 
 
+<p>원본: <a href="https://learnopengl.com/Getting-started/Shaders">Shaders</a></p>
 <h1 id="_1">셰이더</h1>
 <p><a href="../%EC%95%88%EB%85%95%20%EC%82%BC%EA%B0%81%ED%98%95/">안녕 삼각형</a> 챕터에서 언급했듯이, 셰이더는 GPU에서 실행되는 작은 프로그램입니다. 이러한 프로그램은 그래픽 파이프라인의 각 특정 단계에서 실행됩니다. 간단히 말해, 셰이더는 입력을 출력으로 변환하는 프로그램에 지나지 않습니다. 또한 셰이더는 서로 통신할 수 없도록 매우 독립적으로 작동하는 프로그램입니다. 셰이더 간의 통신은 오직 입력과 출력을 통해서만 이루어집니다.</p>
 <p>이전 장에서는 셰이더의 기본적인 개념과 올바른 사용법을 간략하게 살펴보았습니다. 이제 셰이더, 특히 OpenGL 셰이딩 언어에 대해 보다 일반적인 방식으로 설명하겠습니다.</p>
@@ -989,9 +990,9 @@
 <span class="w">    </span><span class="n">glfwPollEvents</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>이 코드는 이전 코드를 비교적 간단하게 변형한 것입니다. 이번에는 삼각형을 그리기 전에 매 프레임마다 uniform 변수를 업데이트합니다. uniform 변수를 올바르게 업데이트하면 삼각형의 색상이 녹색에서 검은색으로, 다시 녹색으로 점차 변하는 것을 볼 수 있습니다.</p>
+<p>이 코드는 이전 코드를 비교적 간단하게 변형한 것입니다. 이번에는 삼각형을 그리기 전에 매 프레임마다 uniform 변수를 업데이트합니다. uniform 변수를 올바르게 업데이트하면 삼각형의 색상이 녹색에서 검은색으로, 다시 녹색으로 점차 변하는 것을 볼 수 있습니다. (클릭해서 확인하세요.)</p>
 <figure class="video_container">
-  <video controls="true" allowfullscreen="true">
+  <video loop onclick="this.paused ? this.play() : this.pause();">
     <source src="/static/shaders.webm" type="video/webm">
     <source src="/static/shaders.mp4" type="video/mp4">
   </video>

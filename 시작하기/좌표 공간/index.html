@@ -642,6 +642,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모든 것을 종합해보면
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        첫번째 3D
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3d_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        더 많은 3D
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -767,6 +800,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모든 것을 종합해보면
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        첫번째 3D
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3d_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        더 많은 3D
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -784,8 +850,9 @@
 
 
 
+<p>원본: <a href="https://learnopengl.com/Getting-started/Coordinate-Systems">Coordinate Systems</a></p>
 <h1 id="_1">좌표 공간</h1>
-<p>지난 장에서는 변환 행렬**{:.g}을 사용하여 모든 정점을 변환하는 방법을 배웠습니다. OpenGL은 각 정점 셰이더 실행 후 화면에 표시될 모든 정점이 정규화된 장치 좌표(NDC)로 변환되어 있어야 한다고 요구합니다. 즉, 각 정점의 x, y, z 좌표는 -1.0에서 1.0 사이여야 하며, 이 범위를 벗어나는 좌표는 화면에 표시되지 않습니다. 일반적으로 우리는 좌표 범위를 직접 지정하고 정점 셰이더에서 이러한 좌표를 정규화된 장치 좌표(NDC)로 변환합니다. 이렇게 변환된 NDC 좌표는 래스터라이저에 전달되어 화면의 2D 좌표/픽셀로 변환됩니다.</p>
+<p>지난 장에서는 <strong class="g">변환 행렬</strong>을 사용하여 모든 정점을 변환하는 방법을 배웠습니다. OpenGL은 각 정점 셰이더 실행 후 화면에 표시될 모든 정점이 정규화된 장치 좌표(NDC)로 변환되어 있어야 한다고 요구합니다. 즉, 각 정점의 x, y, z 좌표는 -1.0에서 1.0 사이여야 하며, 이 범위를 벗어나는 좌표는 화면에 표시되지 않습니다. 일반적으로 우리는 좌표 범위를 직접 지정하고 정점 셰이더에서 이러한 좌표를 정규화된 장치 좌표(NDC)로 변환합니다. 이렇게 변환된 NDC 좌표는 래스터라이저에 전달되어 화면의 2D 좌표/픽셀로 변환됩니다.</p>
 <p>좌표를 NDC로 변환하는 작업은 일반적으로 객체의 정점을 여러 좌표계로 변환한 후 최종적으로 NDC로 변환하는 단계별 방식으로 수행됩니다. 여러 중간 좌표계로 변환하는 장점은 특정 좌표계에서 일부 연산/계산이 더 쉽다는 점이며, 이는 곧 명확해질 것입니다. 우리가 다룰 중요한 좌표계는 총 5가지입니다.</p>
 <ul>
 <li>로컬 공간(또는 객체 공간)</li>
@@ -842,6 +909,106 @@
 <h3 id="_8">원근 투영</h3>
 <p>실생활에서 볼 수 있는 그래픽을 감상해 본 적이 있다면 멀리 있는 물체가 훨씬 작게 보이는 것을 알 수 있을 것입니다. 이러한 신기한 현상을 우리는 원근법이라고 부릅니다. 원근법은 특히 다음 이미지에서처럼 끝없이 펼쳐진 고속도로나 철로의 끝자락을 내려다볼 때 두드러지게 나타납니다.</p>
 <p><img alt="" src="../../static/perspective.png" /></p>
+<p>보시다시피, 원근법 때문에 충분히 먼 거리에서는 선들이 일치하는 것처럼 보입니다. 이것이 바로 원근 투영이 모방하려는 효과이며, <strong class="g">원근 투영 행렬</strong>을 사용하여 이를 구현합니다. 투영 행렬은 주어진 절두체 범위를 클립 공간으로 매핑할 뿐만 아니라, 각 정점 좌표의 w 값을 조작하여 정점 좌표가 보는 사람으로부터 멀어질수록 w 값이 커지도록 합니다. 좌표가 클립 공간으로 변환되면 -w에서 w 사이의 범위에 있게 됩니다(이 범위를 벗어나는 모든 값은 잘립니다). OpenGL은 최종 정점 셰이더 출력에서 ​​보이는 좌표가 -1.0에서 1.0 사이의 범위에 있어야 하므로, 좌표들이 클립 공간에 들어온 뒤에는 클립 공간 좌표에 아래와 같은 원근 분할 이 적용됩니다.</p>
+<div class="arithmatex">\[
+out = \begin{pmatrix} x /w \\ y / w \\ z / w \end{pmatrix}
+\]</div>
+<p>정점 좌표의 각 성분은 w 성분으로 나누어지므로, 정점이 관찰자로부터 멀어질수록 좌표값이 작아집니다. w 성분이 중요한 또 다른 이유는 바로 원근 투영에 도움을 주기 때문입니다. 이렇게 얻은 좌표는 정규화된 장치 공간 좌표계로 표현됩니다. 직교 투영 및 원근 투영 행렬이 실제로 어떻게 계산되는지 궁금하고 (수학에 크게 부담을 느끼지 않는다면) 성호님의 <a href="https://www.songho.ca/opengl/gl_projectionmatrix.html">이 훌륭한 글</a>을 읽어보시기를 추천합니다.</p>
+<p>GLM에서 원근 투영 행렬은 다음과 같이 생성할 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="n">proj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">perspective</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">radians</span><span class="p">(</span><span class="mf">45.0f</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">width</span><span class="o">/</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1f</span><span class="p">,</span><span class="w"> </span><span class="mf">100.0f</span><span class="p">);</span>
+</code></pre></div>
+<p><code>glm::perspective</code> 함수는 가시 공간을 정의하는 큰 절두체를 생성합니다. 절두체 바깥에 있는 것은 클립 공간 볼륨에 포함되지 않으므로 잘립니다. 원근 절두체는 모양이 고르지 않은 상자로 시각화할 수 있으며, 이 상자 안의 각 좌표는 클립 공간의 한 점에 매핑됩니다. 원근 절두체의 이미지는 아래에서 볼 수 있습니다.</p>
+<p><img alt="" src="../../static/perspective_frustum.png" /></p>
+<p>첫 번째 매개변수는 <strong class="g">시야각(FOV, Field of View)</strong> 값을 정의하며, 이는 보이는 공간의 범위를 설정합니다. 사실적인 화면을 위해서는 일반적으로 45도로 설정하지만, 둠 스타일의 그래픽을 원한다면 더 높은 값으로 설정할 수 있습니다. 두 번째 매개변수는 화면 비율을 설정하는데, 이는 뷰포트의 너비를 높이로 나눈 값입니다. 세 번째와 네 번째 매개변수는 절두체의 근거리 평면과 원거리 평면을 설정합니다. 일반적으로 근거리 평면은 0.1, 원거리 평면은 100.0으로 설정합니다. 근거리 평면과 원거리 평면 사이, 그리고 절두체 내부에 있는 모든 정점이 렌더링됩니다.</p>
+<div class="admonition note">
+<p>원근 행렬의 근접 값이 너무 높게 설정되면(예: 10.0), OpenGL은 카메라에 가까운 모든 좌표(0.0~10.0 사이)를 잘라냅니다. 이로 인해 게임에서 특정 물체에 너무 가까이 다가가면 물체가 투명하게 보이는 현상이 발생할 수 있습니다.</p>
+</div>
+<p>직교 투영을 사용하면 각 정점 좌표가 복잡한 원근 분할 없이 클립 공간에 직접 매핑됩니다(원근 분할은 여전히 ​​수행되지만 w 구성 요소는 조작되지 않고 1로 유지되므로 아무런 영향을 미치지 않습니다). 직교 투영은 원근 투영을 사용하지 않기 때문에 멀리 있는 물체가 작아 보이지 않아 시각적으로 어색한 결과가 나타납니다. 이러한 이유로 직교 투영은 주로 2D 렌더링이나 원근으로 인한 정점 왜곡이 바람직하지 않은 건축 또는 엔지니어링 응용 분야에서 사용됩니다. Blender와 같은 3D 모델링 프로그램에서는 각 객체의 크기를 더 정확하게 표현하기 위해 직교 투영을 모델링에 사용하는 경우가 있습니다. 아래에서 Blender의 두 투영 방식을 비교해 볼 수 있습니다.</p>
+<p><img alt="" src="../../static/perspective_orthographic.png" /></p>
+<p>원근 투영에서는 멀리 있는 꼭짓점이 훨씬 작게 보이는 반면, 직교 투영에서는 각 꼭짓점이 사용자에게서 동일한 거리에 있는 것을 알 수 있습니다.</p>
+<h2 id="_9">모든 것을 종합해보면</h2>
+<p>앞서 언급한 각 단계(모델, 뷰, 투영 행렬)에 대해 변환 행렬을 생성합니다. 그런 다음 정점 좌표는 다음과 같이 클립 좌표로 변환됩니다.</p>
+<div class="arithmatex">\[
+V_{clip} = M_{projection} \cdot M_{view} \cdot M_{model} \cdot V_{local}
+\]</div>
+<blockquote>
+<p>M은 행렬, V는 벡터(정점)를 뜻합니다.</p>
+</blockquote>
+<p>행렬 곱셈 순서가 반대로 되어 있다는 점에 유의하세요(행렬 곱셈은 오른쪽에서 왼쪽으로 읽어야 합니다). 결과로 나온 정점은 정점 셰이더의 <code>gl_Position</code>에 할당해야 하며, 그러면 OpenGL이 자동으로 원근 분할과 클리핑을 수행합니다.</p>
+<div class="admonition note">
+<p class="admonition-title">그런 다음?</p>
+<p>정점 셰이더의 출력은 클립 공간 좌표를 필요로 하는데, 이는 방금 변환 행렬을 사용하여 수행한 것입니다. OpenGL은 클립 공간 좌표에 원근분활을 적용하여 정규화된 장치 좌표로 변환합니다. 그런 다음 OpenGL은 <code>glViewPort</code> 함수의 매개변수를 사용하여 정규화된 장치 좌표를 화면 좌표로 매핑합니다. 여기서 각 좌표는 화면상의 한 점(이 예에서는 800x600 화면)에 해당합니다. 이 과정을 뷰포트 변환이라고 합니다.</p>
+</div>
+<p>이 주제는 이해하기 어려울 수 있으므로 각 좌표 공간이 정확히 무엇에 사용되는지 아직 잘 모르시더라도 걱정하지 마세요. 아래에서 이러한 좌표 공간을 실제로 어떻게 유용하게 활용할 수 있는지 보여드리고, 앞으로 나올 장들에서 충분한 예시를 제공할 예정입니다.</p>
+<h2 id="3d">첫번째 3D</h2>
+<p>이제 3D 좌표를 2D 좌표로 변환하는 방법을 알았으니, 지금까지 보여드렸던 밋밋한 2D 평면 대신 실제 3D 객체를 렌더링할 수 있습니다.</p>
+<p>3D 드로잉을 시작하려면 먼저 모델 행렬을 만들어야 합니다. 모델 행렬은 객체의 모든 정점을 전역 월드 공간으로 변환하기 위해 적용할 이동, 크기 조정 및/또는 회전으로 구성됩니다. 평면을 바닥에 놓인 것처럼 보이도록 x축을 중심으로 회전시켜 변환해 보겠습니다. 그러면 모델 행렬은 다음과 같습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="p">(</span><span class="mf">1.0f</span><span class="p">);</span>
+<span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">rotate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">radians</span><span class="p">(</span><span class="mf">-55.0f</span><span class="p">),</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">));</span><span class="w"> </span>
+</code></pre></div>
+<p>정점 좌표에 이 모델 행렬을 곱하면 정점 좌표가 월드 좌표로 변환됩니다. 따라서 바닥에 약간 닿아 있는 평면은 전역 좌표계에서의 평면을 나타냅니다.</p>
+<p>다음으로 뷰 행렬을 생성해야 합니다. 객체가 보이도록 장면에서 약간 뒤로 이동하려고 합니다(월드 공간에서 원점(0,0,0)에 위치할 때). 장면 내에서 이동하는 방법은 다음과 같습니다.</p>
+<ul>
+<li>카메라를 뒤로 이동시키는 것은 장면 전체를 앞으로 이동시키는 것과 같습니다.</li>
+</ul>
+<p>뷰 매트릭스는 바로 그런 역할을 합니다. 카메라가 이동해야 할 위치에 맞춰 전체 장면을 반전시켜 이동시키는 것이죠.<br />
+뒤로 이동하고 싶고 OpenGL은 오른손 좌표계이므로 양의 z축 방향으로 이동해야 합니다. 이를 위해 장면을 음의 z축 방향으로 이동시킵니다. 이렇게 하면 뒤로 이동하는 것처럼 보입니다.</p>
+<div class="admonition note">
+<p class="admonition-title">오른손 좌표계</p>
+<p>관례적으로 OpenGL은 오른손 좌표계를 사용합니다. 즉, 양의 x축은 오른쪽, 양의 y축은 위쪽, 양의 z축은 뒤쪽을 가리킵니다. 화면을 세 축의 중심이라고 생각하고, 양의 z축이 화면을 통과하여 사용자를 향한다고 생각하면 됩니다. 축은 다음과 같이 그려집니다.</p>
+<p><img alt="" src="../../static/coordinate_systems_right_handed.png" /></p>
+<p>오른손잡이라고 불리는 이유를 이해하려면 다음 과정을 시도해보세요.</p>
+<ul>
+<li>오른팔을 양의 y축 방향으로 쭉 뻗고 손을 위로 향하게 하세요.</li>
+<li>엄지손가락이 오른쪽을 가리키도록 하세요.</li>
+<li>검지손가락을 위로 향하게 하세요.</li>
+<li>이제 가운데 손가락을 아래쪽으로 90도 구부리세요.</li>
+</ul>
+<p>제대로 했다면 엄지손가락은 양의 x축을, 검지손가락은 양의 y축을, 중지손가락은 양의 z축을 가리킬 것입니다. 만약 왼팔로 똑같이 한다면 z축이 반대로 표시되는 것을 볼 수 있습니다. 이것을 왼손 좌표계라고 하며 DirectX에서 흔히 사용됩니다. 참고로, 정규화된 장치 좌표계에서는 OpenGL도 실제로 왼손 좌표계를 사용합니다(투영 행렬이 좌표계의 방향을 바꿉니다).</p>
+<p><strong>번역자 코멘트</strong></p>
+<p>마인크래프트는 오른손 좌표계를 사용합니다. 마인크래프트를 즐겨 했다면 오른손 좌표계가 익숙할수도 있겠네요.</p>
+<p>또한 블렌더는 왼손 좌표계를 사용합니다.</p>
+</div>
+<p>다음 장에서는 장면을 이동하는 방법에 대해 더 자세히 설명하겠습니다. 지금은 뷰 매트릭스가 다음과 같습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="n">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="p">(</span><span class="mf">1.0f</span><span class="p">);</span>
+<span class="c1">// 참고로, 우리는 이동하려는 방향과 반대 방향으로 장면을 이동시키고 있습니다.</span>
+<span class="n">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">translate</span><span class="p">(</span><span class="n">view</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">-3.0f</span><span class="p">));</span><span class="w"> </span>
+</code></pre></div>
+<p>마지막으로 정의해야 할 것은 투영 행렬입니다. 장면에 원근 투영을 사용할 것이므로 다음과 같이 투영 행렬을 선언합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="n">projection</span><span class="p">;</span>
+<span class="n">projection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">perspective</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">radians</span><span class="p">(</span><span class="mf">45.0f</span><span class="p">),</span><span class="w"> </span><span class="mf">800.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">600.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1f</span><span class="p">,</span><span class="w"> </span><span class="mf">100.0f</span><span class="p">);</span>
+</code></pre></div>
+<p>이제 변환 행렬을 생성했으니 이를 셰이더에 전달해야 합니다. 먼저 정점 셰이더에서 변환 행렬을 유니폼 변수로 선언하고 정점 좌표와 곱해 보겠습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#version 330 core</span>
+<span class="k">layout</span><span class="w"> </span><span class="p">(</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">aPos</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">uniform</span><span class="w"> </span><span class="kt">mat4</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
+<span class="k">uniform</span><span class="w"> </span><span class="kt">mat4</span><span class="w"> </span><span class="n">view</span><span class="p">;</span>
+<span class="k">uniform</span><span class="w"> </span><span class="kt">mat4</span><span class="w"> </span><span class="n">projection</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 행렬 곱셈은 ​​오른쪽에서 왼쪽으로 읽는다는 점에 유의하세요.</span>
+<span class="w">    </span><span class="nb">gl_Position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">projection</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">view</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">aPos</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>또한 변환 행렬을 셰이더로 보내야 합니다(변환 행렬은 자주 변경되는 경향이 있으므로 일반적으로 매 프레임마다 수행합니다).</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">modelLoc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">ourShader</span><span class="p">.</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;model&quot;</span><span class="p">);</span>
+<span class="n">glUniformMatrix4fv</span><span class="p">(</span><span class="n">modelLoc</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">GL_FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">value_ptr</span><span class="p">(</span><span class="n">model</span><span class="p">));</span>
+<span class="p">...</span><span class="w"> </span><span class="c1">// 뷰 행렬과 프로젝션 행렬 모두 동일</span>
+</code></pre></div>
+<p>이제 정점 좌표가 모델, 뷰 및 투영 행렬을 통해 변환되었으므로 최종 객체는 다음과 같아야 합니다.</p>
+<ul>
+<li>뒤로 기울어져 바닥에 붙어있어야 합니다.</li>
+<li>우리로부터 조금 더 멀리 떨어져 있습니다.</li>
+<li>원근감이 표현되어야 합니다. (꼭짓점이 멀어질수록 크기가 작아져야 합니다)</li>
+</ul>
+<p>결과가 실제로 이러한 요구 사항을 충족하는지 확인해 보겠습니다.</p>
+<p><img alt="" src="../../static/coordinate_systems_result.png" /></p>
+<p>정말 평면이 가상의 바닥 위에 놓여 있는 3차원 평면처럼 보이네요. 만약 같은 결과가 나오지 않는다면, 여러분의 코드와 <a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/6.1.coordinate_systems/coordinate_systems.cpp">전체 소스 코드</a>를 비교해 보세요.</p>
+<h2 id="3d_1">더 많은 3D</h2>
+<p>지금까지는 3D 공간에서도 2D 평면만을 다뤄왔지만, 이제 좀 더 나아가 2D 평면을 3D 정육면체로 확장해 보겠습니다. 정육면체를 렌더링하려면 총 36개의 정점(면 6개 * 삼각형 2개 * 각 삼각형당 정점 3개)이 필요합니다. 36개의 정점은 계산하기 어려우니, 여기에서 필요한 정점들을 가져올 수 있습니다.</p>
 
 
 
