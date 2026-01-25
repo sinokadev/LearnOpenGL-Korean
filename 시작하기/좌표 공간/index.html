@@ -673,6 +673,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="더 많은 3D">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Z-버퍼
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        더 많은 상자!!!!
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습 문제
+      
+    </span>
+  </a>
+  
 </li>
       
     </ul>
@@ -827,6 +866,45 @@
     <span class="md-ellipsis">
       
         더 많은 3D
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="더 많은 3D">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Z-버퍼
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        더 많은 상자!!!!
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습 문제
       
     </span>
   </a>
@@ -1008,7 +1086,75 @@ V_{clip} = M_{projection} \cdot M_{view} \cdot M_{model} \cdot V_{local}
 <p><img alt="" src="../../static/coordinate_systems_result.png" /></p>
 <p>정말 평면이 가상의 바닥 위에 놓여 있는 3차원 평면처럼 보이네요. 만약 같은 결과가 나오지 않는다면, 여러분의 코드와 <a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/6.1.coordinate_systems/coordinate_systems.cpp">전체 소스 코드</a>를 비교해 보세요.</p>
 <h2 id="3d_1">더 많은 3D</h2>
-<p>지금까지는 3D 공간에서도 2D 평면만을 다뤄왔지만, 이제 좀 더 나아가 2D 평면을 3D 정육면체로 확장해 보겠습니다. 정육면체를 렌더링하려면 총 36개의 정점(면 6개 * 삼각형 2개 * 각 삼각형당 정점 3개)이 필요합니다. 36개의 정점은 계산하기 어려우니, 여기에서 필요한 정점들을 가져올 수 있습니다.</p>
+<p>지금까지는 3D 공간에서도 2D 평면만을 다뤄왔지만, 이제 좀 더 나아가 2D 평면을 3D 정육면체로 확장해 보겠습니다. 정육면체를 렌더링하려면 총 36개의 정점(면 6개 * 삼각형 2개 * 각 삼각형당 정점 3개)이 필요합니다. 36개의 정점은 계산하기 어려우니, <a href="https://learnopengl.com/code_viewer.php?code=getting-started/cube_vertices">여기</a>에서 필요한 정점들을 가져올 수 있습니다.</p>
+<p>재미 삼아 시간이 지남에 따라 큐브가 회전하도록 두겠습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">rotate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">glfwGetTime</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">radians</span><span class="p">(</span><span class="mf">50.0f</span><span class="p">),</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">));</span><span class="w"> </span>
+</code></pre></div>
+<p>그다음에는 (인덱스를 지정하지 않았으므로) <code>glDrawArrays</code>를 사용하여 큐브를 그리겠습니다. 이번에는 꼭짓점의 개수를 36개로 지정합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">36</span><span class="p">);</span>
+</code></pre></div>
+<p>다음과 비슷한 결과가 나올 것입니다. (클릭해서 확인하세요.)</p>
+<figure class="video_container">
+  <video loop onclick="this.paused ? this.play() : this.pause();">
+    <source src="/static/coordinate_system_no_depth.mp4" type="video/webm">
+  </video>
+</figure>
+
+<p>약간 정육면체처럼 보이긴 하지만 뭔가 이상합니다. 정육면체의 일부 면이 다른 면 위에 겹쳐 그려지고 있습니다. 이는 OpenGL이 삼각형 단위로, 즉 프래그먼트 단위로 정육면체를 그릴 때 이전에 그려진 픽셀 색상을 덮어쓰기 때문에 발생합니다. OpenGL은 (동일한 드로우 콜 내에서) 삼각형 렌더링 순서를 보장하지 않으므로, 분명히 앞에 있어야 할 삼각형이 서로 겹쳐 그려지는 현상이 발생합니다.</p>
+<p>다행히 OpenGL은 깊이 정보를 <strong class="g">z-버퍼</strong>라는 버퍼에 저장하여 픽셀 위에 그림을 그릴지 말지를 결정할 수 있습니다. z-버퍼를 사용하면 OpenGL이 깊이 테스트를 수행하도록 설정할 수 있습니다.</p>
+<h3 id="z-">Z-버퍼</h3>
+<p>OpenGL은 <strong class="g">깊이 버퍼</strong>라고도 불리는 z-버퍼에 모든 깊이 정보를 저장합니다. GLFW는 출력 이미지의 색상을 저장하는 컬러 버퍼처럼 이러한 버퍼를 자동으로 생성합니다. 깊이 정보는 각 프래그먼트(프래그먼트의 z 값)에 저장되며, 프래그먼트가 색상을 출력하려고 할 때 OpenGL은 해당 프래그먼트의 깊이 값을 z-버퍼와 비교합니다. 현재 프래그먼트가 다른 프래그먼트보다 깊이가 낮으면 해당 값은 버려지고, 그렇지 않으면 덮어쓰기됩니다. 이 과정을 <strong class="g">깊이 테스트</strong>라고 하며 OpenGL에서 자동으로 수행됩니다.</p>
+<p>하지만 OpenGL이 실제로 깊이 테스트를 수행하도록 하려면 먼저 OpenGL에 깊이 테스트를 활성화하도록 알려야 합니다. 깊이 테스트는 기본적으로 비활성화되어 있습니다. <code>glEnable</code> 함수를 사용하여 깊이 테스트를 활성화할 수 있습니다. <code>glEnable</code> 및 <code>glDisable</code> 함수를 사용하면 OpenGL의 특정 기능을 활성화/비활성화할 수 있습니다. 활성화/비활성화된 기능은 다시 비활성화/활성화 함수를 호출할 때까지 유지됩니다. 지금 우리는 <code>GL_DEPTH_TEST</code>를 활성화하여 깊이 테스트를 활성화하려고 합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">glEnable</span><span class="p">(</span><span class="n">GL_DEPTH_TEST</span><span class="p">);</span><span class="w">  </span>
+</code></pre></div>
+<p>깊이 버퍼를 사용하고 있으므로 각 렌더링 반복 전에 깊이 버퍼를 지워야 합니다(그렇지 않으면 이전 프레임의 깊이 정보가 버퍼에 남아 있게 됩니다). 색상 버퍼를 지우는 것과 마찬가지로 <code>glClear</code> 함수에서 <code>DEPTH_BUFFER_BIT</code> 비트를 지정하여 깊이 버퍼를 지울 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">);</span>
+</code></pre></div>
+<p>이제 프로그램을 다시 실행해서 OpenGL이 깊이 테스트를 제대로 수행하는지 확인해 보겠습니다. (클릭해서 확인하세요.)</p>
+<figure class="video_container">
+  <video loop onclick="this.paused ? this.play() : this.pause();">
+    <source src="/static/coordinate_system_depth.mp4" type="video/webm">
+  </video>
+</figure>
+
+<p>자, 완성입니다! 시간이 지남에 따라 회전하는, 깊이 테스트까지 완벽하게 적용된 텍스처링된 큐브입니다. 소스 코드는 <a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/6.2.coordinate_systems_depth/coordinate_systems_depth.cpp">여기</a>에서 확인하세요.</p>
+<h3 id="_10">더 많은 상자!!!!</h3>
+<p>화면에 큐브 10개를 표시한다고 가정해 보겠습니다. 각 큐브는 외형은 동일하지만, 월드 상에서의 위치와 회전 각도만 다릅니다. 큐브의 그래픽 레이아웃은 이미 정의되어 있으므로, 객체를 추가할 때 버퍼나 속성 배열을 변경할 필요가 없습니다. 각 객체에 대해 변경해야 하는 유일한 부분은 큐브를 월드에 맞게 변환하는 모델 행렬입니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">cubePositions</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w">  </span><span class="mf">0.0f</span><span class="p">,</span><span class="w">  </span><span class="mf">0.0f</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="w"> </span><span class="mf">2.0f</span><span class="p">,</span><span class="w">  </span><span class="mf">5.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">-15.0f</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">-1.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">-2.2f</span><span class="p">,</span><span class="w"> </span><span class="mf">-2.5f</span><span class="p">),</span><span class="w">  </span>
+<span class="w">    </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">-3.8f</span><span class="p">,</span><span class="w"> </span><span class="mf">-2.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">-12.3f</span><span class="p">),</span><span class="w">  </span>
+<span class="w">    </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="w"> </span><span class="mf">2.4f</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.4f</span><span class="p">,</span><span class="w"> </span><span class="mf">-3.5f</span><span class="p">),</span><span class="w">  </span>
+<span class="w">    </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">-1.7f</span><span class="p">,</span><span class="w">  </span><span class="mf">3.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">-7.5f</span><span class="p">),</span><span class="w">  </span>
+<span class="w">    </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="w"> </span><span class="mf">1.3f</span><span class="p">,</span><span class="w"> </span><span class="mf">-2.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">-2.5f</span><span class="p">),</span><span class="w">  </span>
+<span class="w">    </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="w"> </span><span class="mf">1.5f</span><span class="p">,</span><span class="w">  </span><span class="mf">2.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">-2.5f</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="w"> </span><span class="mf">1.5f</span><span class="p">,</span><span class="w">  </span><span class="mf">0.2f</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.5f</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">-1.3f</span><span class="p">,</span><span class="w">  </span><span class="mf">1.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.5f</span><span class="p">)</span><span class="w">  </span>
+<span class="p">};</span>
+</code></pre></div>
+<p>이제 렌더링 루프 내에서 <code>glDrawArrays</code> 함수를 10번 호출하되, 매번 드로우 콜을 보내기 전에 서로 다른 모델 행렬을 정점 셰이더로 전달하려고 합니다. 이를 위해 렌더링 루프 내에 작은 루프를 만들어 매번 다른 모델 행렬을 사용하여 객체를 10번 렌더링합니다. 또한 각 컨테이너에 고유한 회전 값을 추가합니다.</p>
+<div class="highlight"><pre><span></span><code><span class="n">glBindVertexArray</span><span class="p">(</span><span class="n">VAO</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="p">(</span><span class="mf">1.0f</span><span class="p">);</span>
+<span class="w">    </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">translate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">cubePositions</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20.0f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">rotate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ourShader</span><span class="p">.</span><span class="n">setMat4</span><span class="p">(</span><span class="s">&quot;model&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">model</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">36</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>이 코드 조각은 새로운 큐브가 그려질 때마다 모델 행렬을 업데이트하고, 이 작업을 총 10번 수행합니다. 이제 우리는 이상하게 회전된 큐브 10개로 가득 찬 세상을 보고 있을 것입니다.</p>
+<p><img alt="" src="../../static/coordinate_systems_multiple_objects.png" /></p>
+<p>완벽해요! 우리 컨테이너가 뜻이 맞는 친구들을 찾은 것 같네요. 혹시 막히는 부분이 있으면 <a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/6.3.coordinate_systems_multiple/coordinate_systems_multiple.cpp">소스 코드</a>와 비교해 보세요.</p>
+<h2 id="_11">연습 문제</h2>
+<ul>
+<li>GLM의 투영 함수의 FoV(시야각)와 종횡비 매개변수를 바꿔가며 실험해 보세요. 이러한 매개변수들이 원근 절두체에 어떤 영향을 미치는지 파악해 보세요.</li>
+<li>뷰 매트릭스를 여러 방향으로 이동시켜 장면이 어떻게 변하는지 살펴보세요. 뷰 매트릭스를 카메라 객체라고 생각하면 됩니다.</li>
+<li>모델 행렬만을 사용하여 첫 번째 컨테이너를 포함하여 3번째 컨테이너마다 시간이 지남에 따라 회전하도록 하고, 나머지 컨테이너는 고정된 상태로 유지하세요. (<a href="https://github.com/JoeyDeVries/LearnOpenGL/blob/master/src/1.getting_started/6.4.coordinate_systems_exercise3/coordinate_systems_exercise3.cpp">해결 방법</a>)</li>
+</ul>
 
 
 
